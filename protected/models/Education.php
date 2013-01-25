@@ -6,10 +6,12 @@
  * The followings are the available columns in table 'tbl_emp_education':
  * @property integer $edu_code
  * @property string $emp_number
- * @property string $degree
+ * @property string $degree_course
+ * @property string $level
  * @property string $school
- * @property string $start_date
- * @property string $end_date
+ * @property string $yr_start
+ * @property string $yr_end
+ * @property integer $remarks
  *
  * The followings are the available model relations:
  * @property Employee $empNumber
@@ -42,14 +44,15 @@ class Education extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('degree,school,start_date,end_date','required'),
+			array('emp_number,degree_course,level,school,yr_start,yr_end','required'),
+			array('remarks', 'length', 'max'=>200),
 			array('emp_number', 'length', 'max'=>10),
-			array('degree', 'length', 'max'=>50),
+			array('degree_course, level', 'length', 'max'=>50),
 			array('school', 'length', 'max'=>100),
-			array('start_date, end_date', 'safe'),
+			array('yr_start, yr_end', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('edu_code, emp_number, degree, school, start_date, end_date', 'safe', 'on'=>'search'),
+			array('edu_code, emp_number, degree_course, level, school, yr_start, yr_end, remarks', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,12 +74,14 @@ class Education extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'edu_code' => 'Edu Code',
-			'emp_number' => 'Emp Number',
-			'degree' => 'Degree',
+			'edu_code' => 'Code',
+			'emp_number' => 'Employee Number',
+			'degree_course' => 'Degree Course',
+			'level' => 'Level',
 			'school' => 'School',
-			'start_date' => 'Start Date',
-			'end_date' => 'End Date',
+			'yr_start' => 'Year Started',
+			'yr_end' => 'Year Ended',
+			'remarks' => 'Remarks',
 		);
 	}
 
@@ -93,10 +98,12 @@ class Education extends CActiveRecord
 
 		$criteria->compare('edu_code',$this->edu_code);
 		$criteria->compare('emp_number',$this->emp_number,true);
-		$criteria->compare('degree',$this->degree,true);
+		$criteria->compare('degree_course',$this->degree_course,true);
+		$criteria->compare('level',$this->level,true);
 		$criteria->compare('school',$this->school,true);
-		$criteria->compare('start_date',$this->start_date,true);
-		$criteria->compare('end_date',$this->end_date,true);
+		$criteria->compare('yr_start',$this->yr_start,true);
+		$criteria->compare('yr_end',$this->yr_end,true);
+		$criteria->compare('remarks',$this->remarks);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

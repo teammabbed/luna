@@ -35,7 +35,6 @@
  * @property string $emp_mobile
  * @property string $emp_work_tel
  * @property string $emp_work_email
- * @property string $emp_oth_email
  * @property integer $sal_grade_code
  * @property string $joined_date
  * @property string $orig_appointment
@@ -103,19 +102,21 @@ class Employee extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('emp_number,emp_lname,emp_fname,dept_code,emp_supervisor', 'required'),
-			array('emp_status, position_code, emp_town, emp_province, dept_code, sal_grade_code', 'numerical', 'integerOnly'=>true),
+			array('emp_number,emp_birthday ,emp_lname,emp_fname,dept_code,emp_address,item_no,emp_supervisor,emp_status,emp_gender,joined_date,position_code', 'required'),
+			array('emp_number','unique'),
+			array('emp_status, position_code, dept_code, sal_grade_code, item_no', 'numerical', 'integerOnly'=>true),
 			array('emp_number, emp_supervisor', 'length', 'max'=>10),
-			array('emp_lname, emp_fname, emp_mname, emp_nickname, emp_hm_tel, emp_mobile, emp_work_tel, emp_work_email, emp_oth_email, orig_appointment, promoted_position, termination_position, lastEditedBy', 'length', 'max'=>50),
+			array('emp_lname, emp_fname, emp_mname, emp_nickname, emp_hm_tel, emp_mobile, emp_work_tel, emp_work_email,  orig_appointment, promoted_position, termination_position, lastEditedBy', 'length', 'max'=>50),
 			array('emp_gender', 'length', 'max'=>6),
+			array('emp_name_ext', 'length', 'max'=>4),
 			array('emp_birthplace, emp_address, emp_address_current', 'length', 'max'=>100),
-			array('emp_marital_status, emp_sss_num, emp_gsis_num, emp_philhealth_num, emp_hdmf_num, emp_policy_num, emp_bp_num, emp_unified_num, emp_tin_num, emp_ctc_num', 'length', 'max'=>20),
+			array('emp_marital_status, emp_sss_num, emp_gsis_num, emp_philhealth_num, emp_hdmf_num, emp_policy_num, emp_unified_num, emp_tin_num, emp_ctc_num', 'length', 'max'=>20),
 			array('termination_reason', 'length', 'max'=>256),
 			array('isActive', 'length', 'max'=>1),
 			array('emp_birthday, emp_ctc_date, joined_date, promoted_date, termination_date, lastEdited', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('emp_number, emp_lname, emp_fname, emp_gender, emp_mname, emp_nickname, emp_birthday, emp_birthplace, emp_marital_status, emp_sss_num, emp_gsis_num, emp_philhealth_num, emp_hdmf_num, emp_policy_num, emp_bp_num, emp_unified_num, emp_tin_num, emp_ctc_num, emp_ctc_date, emp_status, position_code, emp_address, emp_address_current, emp_town, emp_province, dept_code, emp_supervisor, emp_hm_tel, emp_mobile, emp_work_tel, emp_work_email, emp_oth_email, sal_grade_code, joined_date, orig_appointment, promoted_date, promoted_position, termination_date, termination_position, termination_reason, isActive, lastEdited, lastEditedBy', 'safe', 'on'=>'search'),
+			array('emp_number, emp_lname, emp_name_ext,item_no, emp_fname, emp_gender, emp_mname, emp_nickname, emp_birthday, emp_birthplace, emp_marital_status, emp_sss_num, emp_gsis_num, emp_philhealth_num, emp_hdmf_num, emp_policy_num, emp_unified_num, emp_tin_num, emp_ctc_num, emp_ctc_date, emp_status, position_code, emp_address, emp_address_current, dept_code, emp_supervisor, emp_hm_tel, emp_mobile, emp_work_tel, emp_work_email,  sal_grade_code, joined_date, orig_appointment, promoted_date, promoted_position, termination_date, termination_position, termination_reason, isActive, lastEdited, lastEditedBy', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -150,8 +151,6 @@ class Employee extends CActiveRecord
 			'tblEmployees' => array(self::HAS_MANY, 'Employee', 'emp_supervisor'),
 			'status' => array(self::BELONGS_TO, 'Status', 'emp_status'),
 			'position' => array(self::BELONGS_TO, 'Position', 'position_code'),
-			'province' => array(self::BELONGS_TO, 'Province', 'emp_province'),
-			'town' => array(self::BELONGS_TO, 'Town', 'emp_town'),
 		);
 	}
 
@@ -162,40 +161,37 @@ class Employee extends CActiveRecord
 	{
 		return array(
 			'emp_number' => 'Employee ID',
-			'emp_lname' => 'Lastname',
-			'emp_fname' => 'Firstname',
+			'emp_lname' => 'Last Name',
+			'emp_fname' => 'First Name',
+			'emp_name_ext' => 'Name Extension',
 			'emp_gender' => 'Gender',
 			'emp_mname' => 'Middle Name',
 			'emp_nickname' => 'Nickname',
 			'emp_birthday' => 'Birthday',
 			'emp_birthplace' => 'Birthplace',
-			'emp_marital_status' => 'Marital Status',
+			'emp_marital_status' => 'Civil Status',
 			'emp_sss_num' => 'SSS No',
-			'emp_gsis_num' => 'GSIS No',
+			'emp_gsis_num' => 'GSIS ID No',
 			'emp_philhealth_num' => 'PhilHealth No',
 			'emp_hdmf_num' => 'HDMF No',
-			'emp_policy_num' => 'Policy No',
-			'emp_bp_num' => 'BP No',
+			'emp_policy_num' => 'GSIS Policy No',
 			'emp_unified_num' => 'Unified No',
-			'emp_tin_num' => 'Tin No',
+			'emp_tin_num' => 'TIN No',
 			'emp_ctc_num' => 'CTC No',
 			'emp_ctc_date' => 'CTC Date',
 			'emp_status' => 'Status',
 			'position_code' => 'Position',
-			'emp_address' => 'Address',
-			'emp_address_current' => 'Current Address',
-			'emp_town' => 'Town',
-			'emp_province' => 'Emp Province',
+			'emp_address' => 'Permanent Address',
+			'emp_address_current' => 'Residential Address',
 			'dept_code' => 'Department',
 			'emp_supervisor' => 'Supervisor',
-			'emp_hm_tel' => 'Home Tel',
+			'emp_hm_tel' => 'Home Telephone',
 			'emp_mobile' => 'Mobile',
-			'emp_work_tel' => 'Work Tel',
-			'emp_work_email' => 'Work Email',
-			'emp_oth_email' => 'Alternative Email',
-			'sal_grade_code' => 'Sal Grade Code',
+			'emp_work_tel' => 'Work Telephone',
+			'emp_work_email' => 'Email Address',
+			'sal_grade_code' => 'Salary Grade Code',
 			'joined_date' => 'Joined Date',
-			'orig_appointment' => 'Orig Appointment',
+			'orig_appointment' => 'Original Appointment',
 			'promoted_date' => 'Promoted Date',
 			'promoted_position' => 'Promoted Position',
 			'termination_date' => 'Termination Date',
@@ -204,6 +200,7 @@ class Employee extends CActiveRecord
 			'isActive' => 'Is Active',
 			'lastEdited' => 'Last Edited',
 			'lastEditedBy' => 'Last Edited By',
+			'item_no'=>'Item No',
 		);
 	}
 
@@ -221,6 +218,7 @@ class Employee extends CActiveRecord
 		$criteria->compare('emp_number',$this->emp_number,true);
 		$criteria->compare('emp_lname',$this->emp_lname,true);
 		$criteria->compare('emp_fname',$this->emp_fname,true);
+		$criteria->compare('emp_name_ext',$this->emp_name_ext,true);
 		$criteria->compare('emp_gender',$this->emp_gender,true);
 		$criteria->compare('emp_mname',$this->emp_mname,true);
 		$criteria->compare('emp_nickname',$this->emp_nickname,true);
@@ -232,7 +230,6 @@ class Employee extends CActiveRecord
 		$criteria->compare('emp_philhealth_num',$this->emp_philhealth_num,true);
 		$criteria->compare('emp_hdmf_num',$this->emp_hdmf_num,true);
 		$criteria->compare('emp_policy_num',$this->emp_policy_num,true);
-		$criteria->compare('emp_bp_num',$this->emp_bp_num,true);
 		$criteria->compare('emp_unified_num',$this->emp_unified_num,true);
 		$criteria->compare('emp_tin_num',$this->emp_tin_num,true);
 		$criteria->compare('emp_ctc_num',$this->emp_ctc_num,true);
@@ -241,15 +238,12 @@ class Employee extends CActiveRecord
 		$criteria->compare('position_code',$this->position_code);
 		$criteria->compare('emp_address',$this->emp_address,true);
 		$criteria->compare('emp_address_current',$this->emp_address_current,true);
-		$criteria->compare('emp_town',$this->emp_town);
-		$criteria->compare('emp_province',$this->emp_province);
 		$criteria->compare('dept_code',$this->dept_code);
 		$criteria->compare('emp_supervisor',$this->emp_supervisor,true);
 		$criteria->compare('emp_hm_tel',$this->emp_hm_tel,true);
 		$criteria->compare('emp_mobile',$this->emp_mobile,true);
 		$criteria->compare('emp_work_tel',$this->emp_work_tel,true);
 		$criteria->compare('emp_work_email',$this->emp_work_email,true);
-		$criteria->compare('emp_oth_email',$this->emp_oth_email,true);
 		$criteria->compare('sal_grade_code',$this->sal_grade_code);
 		$criteria->compare('joined_date',$this->joined_date,true);
 		$criteria->compare('orig_appointment',$this->orig_appointment,true);
@@ -261,6 +255,8 @@ class Employee extends CActiveRecord
 		$criteria->compare('isActive',$this->isActive,true);
 		$criteria->compare('lastEdited',$this->lastEdited,true);
 		$criteria->compare('lastEditedBy',$this->lastEditedBy,true);
+		$criteria->compare('item_no',$this->item_no,true);
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -280,4 +276,16 @@ class Employee extends CActiveRecord
                             'params' => array(':isActive' => 'Y', 'category' => 'head')
                ));
 	}
+
+	public function getDeptHeadsList(){
+		return $supervisorList = CHtml::listData(Employee::model()->getDeptHeads(), 'emp_number', 'fullname');
+	}
+	
+	public function getEmployees() {
+         return $list = CHtml::listData($this->model()->findAll(array(
+             'order' => 'emp_lname ASC, emp_fname ASC',
+             'condition'=>'isActive=:isActive',
+             'params'=>array(':isActive'=>'Y'),
+          )),'emp_number','fullname');
+    }
 }

@@ -45,7 +45,6 @@ class WorkExperience extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('emp_number,employer,job_title', 'required'),
-			array('internal', 'numerical', 'integerOnly'=>true),
 			array('emp_number', 'length', 'max'=>10),
 			array('employer', 'length', 'max'=>100),
 			array('job_title', 'length', 'max'=>120),
@@ -76,13 +75,14 @@ class WorkExperience extends CActiveRecord
 	{
 		return array(
 			'wexp_code' => 'Wexp Code',
-			'emp_number' => 'Emp Number',
+			'emp_number' => 'Employee Number',
 			'employer' => 'Employer',
 			'job_title' => 'Job Title',
 			'from_date' => 'From Date',
 			'to_date' => 'To Date',
 			'remarks' => 'Remarks',
-			'internal' => 'Internal',
+			'internal' => 'Within Organization',
+			'isgovernment'=>'Goverment Service',
 		);
 	}
 

@@ -116,7 +116,7 @@ class Department extends CActiveRecord
 		));
 	}
 
-	public function getDepartments() {
+	public function getDepartments(){
         return $list = CHtml::listData($this->model()->findAll(array(
 	       'order' => 'shortname',
         )),'dept_code','shortname');

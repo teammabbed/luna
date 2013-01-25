@@ -36,6 +36,20 @@ class SiteController extends Controller
 
 	public function actionLogin()
 	{
+		$route=array(
+			'hradmin'=>'/hr/default/',
+			'head'=>'/user/default/',
+			'superaccountant'=>'/accounting/default/',
+			'accountant'=>'/accounting/default/',
+			'user'=>'user/default/',
+		);
+
+		//check if a user already logged in
+		if(isset(Yii::app()->user->id))
+			$this->redirect(Yii::app()->createUrl($route[Yii::app()->user->getState('role')]));
+
+
+
 		$model=new LoginForm;
 
 		// if it is ajax validation request
@@ -45,23 +59,16 @@ class SiteController extends Controller
 			Yii::app()->end();
 		}
 
-		$route=array(
-			'hradmin'=>'/hr/default/',
-			'head'=>'/user/default/',
-			'superaccountant'=>'/accounting/default/',
-			'accountant'=>'/accounting/default/',
-			'user'=>'user/default/',
-		);
-
 		// collect user input data
 		if(isset($_POST['LoginForm']))
 		{
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
-				$this->redirect(Yii::app()->createUrl($route[Yii::app()->user->getState('role')]));
-				//$this->redirect(Yii::app()->user->returnUrl);
-
+				if(Yii::app()->user->returnUrl==Yii::app()->homeUrl)
+					$this->redirect(Yii::app()->createUrl($route[Yii::app()->user->getState('role')]));
+				else
+					$this->redirect(Yii::app()->user->returnUrl);
 			}
 				
 		}

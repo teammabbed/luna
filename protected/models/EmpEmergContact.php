@@ -43,9 +43,9 @@ class EmpEmergContact extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('emp_number, name, relationship,', 'required'),
+			array('emp_number, name, relationship', 'required'),
 			array('emp_number', 'length', 'max'=>10),
-			array('name, relationship, home_no, mobile_no, office_no', 'length', 'max'=>15),
+			array('home_no, mobile_no, office_no', 'length', 'max'=>15),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('eec_code, emp_number, name, relationship, home_no, mobile_no, office_no', 'safe', 'on'=>'search'),

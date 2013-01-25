@@ -43,6 +43,7 @@ class Training extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('emp_number,title,place','required'),
 			array('emp_number', 'length', 'max'=>10),
 			array('title, place', 'length', 'max'=>100),
 			array('remarks', 'length', 'max'=>200),
@@ -103,5 +104,17 @@ class Training extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	public function getTrainingByEmp($empNumber){
+		return new CActiveDataProvider('Training', array(
+		    'criteria' => array(
+		        'condition' => 'emp_number=:emp_number',
+		        'params' => array(':emp_number' => $empNumber),
+		    ),
+		    'pagination' => array(
+		        'pageSize' => 31,
+		    ),
+        ));
 	}
 }

@@ -86,4 +86,9 @@ class Status extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	public function getStatuses(){
+		return $statusList = CHtml::listData(Status::model()->findAll(array('order' => 'description')),'status_code','description');
+
+	}
 }

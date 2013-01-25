@@ -23,13 +23,9 @@ class DepartmentController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',
-				'actions'=>array('index'),
-				'roles'=>array('admin')
-			),
 			array('allow', 
-				'actions'=>array('create','update','index'),
-				'roles'=>array('admin'),
+				'actions'=>array('create','update','index','admin','delete','user'),
+				'roles'=>array('hradmin'),
 			),
 			array('allow', 
 				'actions'=>array('admin','delete','user'),

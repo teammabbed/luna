@@ -41,9 +41,9 @@
 						//array('label'=>'Manage Leaves', 'url'=>'/personnel/supervisor'),
 					)),
 					array('label'=>'Accounts','items'=>array(
-						array('label'=>'New Account', 'url'=>'/accounts/create'),
-						array('label'=>'Manage Accounts', 'url'=>'/accounts/admin'),
-						array('label'=>'Change Role', 'url'=>'/accounts/chngrole'),
+						array('label'=>'New Account', 'url'=>array('/hr/user/index')),
+						//array('label'=>'Manage Accounts', 'url'=>array('/hr/user/admin')),
+						array('label'=>'Change Role', 'url'=>array('/hr/user/changeRole')),
 					)),
 					array('label'=>'Maintenance','items'=>array(
 						array('label'=>'Office', 'url'=>array('/hr/department/index')),
@@ -55,7 +55,7 @@
 					'class'=>'bootstrap.widgets.TbMenu',
 		            'htmlOptions'=>array('class'=>'pull-right'),
 		            'items'=>array(
-		            	'----',
+		            	'---',
 		                array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 		            )),
