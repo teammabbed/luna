@@ -7,7 +7,7 @@ $this->widget('bootstrap.widgets.TbDetailView', array(
 	    'emp_fname',
 	    'emp_mname',
 	    'emp_lname',
-	    'name_ext',
+	    'emp_name_ext',
 	    'emp_nickname',
 	    'emp_gender',
 	    'emp_birthday',
