@@ -16,17 +16,18 @@ $this->breadcrumbs=array(
 	'filter'=>$model,
 	'type'=>'bordered striped',
 	'columns'=>array(
+		array('header'=>'No','value'=>'$row+1'),
 		'emp_number',
 		'emp_lname',
 		'emp_fname',
-		'emp_mname',
-		array(
-	        'type' => 'raw',
-	        'value' => 'CHtml::link("[Profile]", array("employee/basicInfo&id=".$data->emp_number))',
-        ),
+		array('name'=>'deptname','value'=>'$data->department->name'),
+		//array('name'=>'position','value'=>'($data->position->description==null)?"":$data->position->description'),
+		'isActive',
         array(
+        	'header'=>'Action',
 			'class'=>'bootstrap.widgets.TbButtonColumn',
-			'template' => '{delete}',
+			'template' => '{view}{delete}',
+			'viewButtonUrl'=>'Yii::app()->createUrl("hr/employee/basicInfo", array("id"=>$data->emp_number))',
 		),
 	),
 )); 

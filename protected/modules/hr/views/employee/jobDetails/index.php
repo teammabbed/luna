@@ -18,7 +18,7 @@ $this->widget('bootstrap.widgets.TbTabs', array(
 	'type' => 'tabs',
 	'tabs' => array(
 		array('label' => 'Update', 'content' => $this->renderPartial('jobDetails/_form', array(
-				'model'=>$model,'statusList'=>$statusList,'departmentList'=>$departmentList,'positionList'=>$positionList,'supervisorList'=>$supervisorList
+				'model'=>$model,
 			), true), 'active' => true
 		),
 		array('label' => 'View', 'content' => $this->renderPartial('jobDetails/_view', array(

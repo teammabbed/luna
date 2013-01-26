@@ -15,11 +15,12 @@ $this->widget('bootstrap.widgets.TbTabs', array(
 	'type' => 'tabs',
 	'tabs' => array(
 		array('label' => 'List', 
-			  'content' => $this->renderPartial('_view', array('emergencyContacts'=>$emergencyContacts), true), 
-			  'active' => true
+			  'content' => $this->renderPartial('_view', array('dataProvider'=>$dataProvider), true), 
+			  'active' => (!$model->hasErrors()),
 		),
 		array('label' => 'Create', 
-			  'content' => $this->renderPartial('_form', 
-			   array('model'=>$model,'employee'=>$employee), true)),
+			  'content' => $this->renderPartial('_form',array('model'=>$model,'employee'=>$employee), true),
+			  'active' => ($model->hasErrors()),
+		),
 )));
 ?>

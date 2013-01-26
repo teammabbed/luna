@@ -49,10 +49,10 @@ class WorkExperience extends CActiveRecord
 			array('employer', 'length', 'max'=>100),
 			array('job_title', 'length', 'max'=>120),
 			array('remarks', 'length', 'max'=>200),
-			array('from_date, to_date', 'safe'),
+			array('from_date, to_date, internal,isgovernment', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('wexp_code, emp_number, employer, job_title, from_date, to_date, remarks, internal', 'safe', 'on'=>'search'),
+			array('wexp_code, emp_number, employer, job_title, from_date, to_date, remarks, internal,isgovernment', 'safe', 'on'=>'search'),
 		);
 	}
 

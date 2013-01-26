@@ -4,7 +4,7 @@
 
 <?php echo $form->dropDownListRow($model, 'dept_code',Department::model()->departments,array('empty'=>'--please select--','class'=>'emp_cmp')); ?>
 <?php echo $form->textFieldRow($model, 'item_no',array('class'=>'emp_cmp')); ?>
-<?php echo $form->dropDownListRow($model, 'emp_supervisor', Employee::model()->getDeptHeadsList(),array('empty'=>'--please selecte--')); ?>
+<?php echo $form->dropDownListRow($model, 'emp_supervisor', Employee::model()->employeeHeads,array('empty'=>'--please selecte--')); ?>
 <?php echo $form->dropDownListRow($model, 'position_code',Position::model()->positions,array('empty'=>'--please selecte--')); ?>
 <?php echo $form->dropDownListRow($model, 'emp_status',Status::model()->statuses,array('empty'=>'--please selecte--')); ?>
 <?php echo $form->textFieldRow($model, 'sal_grade_code'); ?>
@@ -33,6 +33,7 @@
 </div>
 
 <?php echo $form->textFieldRow($model, 'orig_appointment'); ?>
+
 
 <div class="control-group">
     <div class="control-label">

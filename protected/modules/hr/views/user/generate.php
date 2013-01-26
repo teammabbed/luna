@@ -1,23 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Generate Leave Credits'
+	'User'=>array('admin'),
+	'Generate User Accounts',
 );
 ?>
 
-<h1>Generate Leave Credits</h1>
-<h4>Note: Existing Leave Credits will NOT be overwritten</h4>
 
-
-<?php
-	// Date Array
-	$date=date('Y');
-	$period=array();
-	for($x=$date-5;$x<=$date+5;$x++){
-		$period[$x]=$x;
-	}
-
-
-?>
+<div class="page-header">
+	<h2>Generate User Accounts</h2>
+	<h4>Note: Existing User Accounts will NOT be overwritten</h4>
+</div>
 
 <?php $box = $this->beginWidget('bootstrap.widgets.TbBox', array(
 	'title' => 'Offices',
@@ -52,7 +44,6 @@ $this->breadcrumbs=array(
 
 ?>
 <br>
-<?php echo $form->dropDownListRow($model,'leave_year',$period,array());?>
 <div class="form-actions">
 <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Generate','type'=>'primary')); ?> 
 </div>

@@ -7,13 +7,13 @@ $level= array(
 	'Graduate Studies'=>'Graduate Studies');
 ?>
 
-
+<div class="well span10">
 <?php
 	 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	    'id'=>'educ-form',
 	    'type'=>'horizontal',
 	)); ?>
-<div class="well span10">
+
 <div class="span4">
 	<?php echo $form->hiddenField($model,'emp_number');?>
 	<?php echo $form->textFieldRow($model,'degree_course');?>
@@ -52,8 +52,8 @@ $level= array(
 	<?php echo $form->textAreaRow($model,'remarks',array('hint'=>'Place here awards received, scholarship grants and other remarks if there\'s any'));?>
 
 	<div class="offset2">
-		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Save','type'=>'primary','icon'=>'ok white')); ?><span style="width:5px"></span>
-		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'reset', 'label'=>'Clear','type'=>'warning','icon'=>'ban-circle white')); ?>
+		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Save','type'=>'primary')); ?><span style="width:5px"></span>
+		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'reset', 'label'=>'Clear','type'=>'warning')); ?>
 	</div>
 </div>
 
@@ -77,12 +77,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 			'header'=>'Actions',
 			'template'=>'{delete}',
 			'class'=>'bootstrap.widgets.TbButtonColumn',
-			'buttons'=>array(
-				'delete'=>array(
-					'url'=>'Yii::app()->createUrl("hr/employee/deleteEduc", array("id"=>$data->edu_code))',
-					''
-				)
-			)
+			'deleteButtonUrl'=>'Yii::app()->createUrl("hr/employee/deleteEduc", array("id"=>$data->edu_code))',
 		),
 	),
 

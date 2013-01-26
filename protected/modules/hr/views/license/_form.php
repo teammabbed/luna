@@ -1,15 +1,14 @@
-<div class="well span10">
+
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
-	'id'=>'license-form',
-	'type'=>'horizontal',
+    'id'=>'license-form',
+    'type'=>'horizontal',
 )); ?>
 
-    <div class="span4">
-    	<?php echo $form->hiddenField($model,'emp_number',array('maxlength'=>10,)); ?>
+        <?php echo $form->hiddenField($model,'emp_number',array('value'=>$this->emp_number,)); ?>
 
-    	<?php echo $form->textFieldRow($model,'license_description',array('maxlength'=>100)); ?>
+        <?php echo $form->textFieldRow($model,'license_description',array('maxlength'=>100)); ?>
 
-    	<?php echo $form->textFieldRow($model,'license_number',array('maxlength'=>120)); ?>
+        <?php echo $form->textFieldRow($model,'license_number',array('maxlength'=>120)); ?>
 
         <div class="control-group">
             <div class="control-label">
@@ -35,9 +34,7 @@
             </div>
         </div>
 
-    </div>  
 
-    <div class="span4">
         <div class="control-group">
             <div class="control-label">
                 <?php echo $form->labelEx($model, 'renewal_date'); ?>
@@ -62,34 +59,10 @@
             </div>
         </div>
 
-    	<div class="offset2">
-           <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Save','type'=>'primary')); ?><span style="width:5px"></span>
-            <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'reset', 'label'=>'Clear','type'=>'warning')); ?>
-        </div>
+
+    <div class="form-actions">
+        <?php $this->widget('bootstrap.widgets.TbButton', array('icon'=>'ok white', 'buttonType'=>'submit', 'label'=>'Save','type'=>'primary')); ?><span style="width:5px"></span>
+        <?php $this->widget('bootstrap.widgets.TbButton', array('icon'=>'ban-cirle white','buttonType'=>'reset', 'label'=>'Clear','type'=>'warning')); ?>
     </div>
 
 <?php $this->endWidget(); ?>
-</div>
-<div class="span10">
-<?php
-$this->widget('bootstrap.widgets.TbGridView', array(
-    'dataProvider'=>$dataProvider,
-    'template'=>"{items}",
-    'columns'=>array(
-        array('header'=>'No','value'=>'$row+1'),
-        'license_description',
-        'license_number',
-        'license_date'=>array('name'=>'license_date','value'=>'date("F d, Y",strtotime($data->license_date))'),
-        'renewal_date'=>array('name'=>'renewal_date','value'=>'date("F d, Y",strtotime($data->renewal_date))'),
-        array(
-            'header'=>'Actions',
-            'template'=>'{delete}',
-            'class'=>'bootstrap.widgets.TbButtonColumn',
-            'deleteButtonUrl'=>'Yii::app()->createUrl("hr/employee/deleteLinc", array("id"=>$data->license_code))',
-        ),
-    ),
-
-));
-
-?>
-</div>

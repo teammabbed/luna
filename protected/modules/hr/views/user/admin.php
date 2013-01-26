@@ -1,19 +1,18 @@
 <?php
 $this->breadcrumbs=array(
-	'User'=>array('index'),
-	($model_new->isNewRecord)?'New User':'Update User',
+	'User',
 );
-
 ?>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model_new)); ?>
-
+<div class="page-header">
+	  <h2>Manage Users</h2>
+</div>
 
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'user-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
-	'type'=>'bordered',
+	'type'=>'striped',
 	'columns'=>array(
 		array('header'=>'No.','value'=>'$row+1'),
 		'username',
@@ -21,7 +20,7 @@ $this->breadcrumbs=array(
 		array('header'=>'Emp Name','name'=>'fullname', 'value'=>'$data->employee->fullname'),
 		array('name'=>'role','value'=>'ucfirst($data->role)'),
 		array(
-			'class'=>'CButtonColumn',
+			'class'=>'bootstrap.widgets.TbButtonColumn',
 			'template'=>'{update}{delete}',
 			'header'=>'Action',
 		),

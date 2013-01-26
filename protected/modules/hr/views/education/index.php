@@ -15,11 +15,13 @@ $this->widget('bootstrap.widgets.TbTabs', array(
 	'type' => 'tabs',
 	'tabs' => array(
 		array('label' => 'List', 
-			  'content' => $this->renderPartial('_view', array('education'=>$education), true), 
-			  'active' => true
+			  'content' => $this->renderPartial('_view', array('dataProvider'=>$education), true), 
+			  'active' => (!$model->hasErrors()),
 		),
 		array('label' => 'Create', 
 			  'content' => $this->renderPartial('_form', 
-			   array('model'=>$model,'employee'=>$employee), true)),
+			   array('model'=>$model,'employee'=>$employee), true),
+			  'active' => ($model->hasErrors()),
+		),
 )));
 ?>

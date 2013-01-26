@@ -4,9 +4,10 @@ $this->widget('bootstrap.widgets.TbDetailView', array(
     'data'=>$model,
     'attributes'=>array(
 	    'emp_number',
-	    'emp_lname',
 	    'emp_fname',
 	    'emp_mname',
+	    'emp_lname',
+	    'name_ext',
 	    'emp_nickname',
 	    'emp_gender',
 	    'emp_birthday',

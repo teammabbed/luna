@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs = array(
-    'Users' => array('index'),
+    'Users' => array('admin'),
     'Chage User Roles',
 );
 
@@ -22,7 +22,7 @@ $this->menu = Department::model()->departments;
 		array(
 			'header'=>'Role',
 			'type'=>'raw',
-			'value'=>'CHtml::dropDownList("role", $data->role, array("hradmin"=>"HR Administrator","head"=>"Head","superaccountant"=>"Super Accountant","user"=>"User"),
+			'value'=>'CHtml::dropDownList("role", $data->role, array("HrAdmin"=>"HR Admin","Head"=>"Head","SuperAccountant"=>"Super Accountant","User"=>"User","Accountant"=>"Accountant"),
 					array("id"=>$data->username,
 						"ajax"=>array(
 							"type"=>"POST",

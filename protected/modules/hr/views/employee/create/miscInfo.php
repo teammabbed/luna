@@ -1,3 +1,9 @@
+<?php
+$this->breadcrumbs=array(
+	'PMIS (Create Employee)'=>array('employee/create'),
+	$this->loadModel($this->emp_number)->fullname
+);
+?>
 <div>
 	  <h2>Create Employee Details for <?php echo $this->loadModel($this->emp_number)->fullname;?></h2>
 </div>

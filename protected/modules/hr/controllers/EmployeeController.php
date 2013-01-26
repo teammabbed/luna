@@ -30,7 +30,7 @@ class EmployeeController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create', 'contact','deleteFam','deleteWrkExp','deleteLinc','deleteEmerContact','deleteEduc','deleteTraining','job', 'basicInfo','dependent','admin','delete'),
+				'actions'=>array('create','createDetails', 'contact','deleteFam','deleteWrkExp','deleteLinc','deleteEmerContact','deleteEduc','deleteTraining','job', 'basicInfo','admin','delete'),
 				'roles'=>array('hradmin'),
 			),
 
@@ -48,12 +48,7 @@ class EmployeeController extends Controller
 	{
 		$this->layout='/layouts/column1';
 		$model=new Employee;
-		$model_fambg=new FamilyBackground;
-		$model_lic=new License;
-		$model_wrkExp=new WorkExperience;
-		$model_training=new Training;
-		$model_emerg=new EmpEmergContact;
-		$model_educ=new Education;
+		$model->scenario='create';
 
 		//$model->addError('emp_number','custom error');
 
@@ -73,15 +68,25 @@ class EmployeeController extends Controller
 				$this->createActiveTab='fmbg';
 				$this->emp_number=$model->emp_number;
 				$model->unsetAttributes();
-				$model_fambg->emp_number=$this->emp_number;
-				$model_lic->emp_number=$this->emp_number;
-				$model_wrkExp->emp_number=$this->emp_number;
-				$model_training->emp_number=$this->emp_number;
-				$model_emerg->emp_number=$this->emp_number;
-				$model_educ->emp_number=$this->emp_number;
+				$this->redirect(array('employee/createDetails','id'=>$this->emp_number));
 			}
 		}
 
+		$this->render('create/personalInfo',array(
+			'model'	=>	$model,
+		));
+	}
+
+	public function actionCreateDetails($id=0){
+		$this->layout='/layouts/column1';
+		$model_fambg=new FamilyBackground;
+		$model_lic=new License;
+		$model_wrkExp=new WorkExperience;
+		$model_training=new Training;
+		$model_emerg=new EmpEmergContact;
+		$model_educ=new Education;
+		$this->emp_number=$id;
+		$this->createActiveTab='fmbg';
 
 		if(isset($_POST['FamilyBackground'])){
 			$this->createActiveTab='fmbg';
@@ -90,45 +95,35 @@ class EmployeeController extends Controller
 			$model_fambg->mi=ucwords(strtolower($model_fambg->mi));
 			$model_fambg->lname=ucwords(strtolower($model_fambg->lname));
 			if($model_fambg->save()){
-				$this->emp_number=$model_fambg->emp_number;
 				$model_fambg->unsetAttributes();
-				$model_fambg->emp_number=$this->emp_number;
 			}
 		}
 		if(isset($_POST['License'])){
 			$this->createActiveTab='lic';
 			$model_lic->attributes=$_POST['License'];
 			if($model_lic->save()){
-				$this->emp_number=$model_lic->emp_number;
 				$model_lic->unsetAttributes();
-				$model_lic->emp_number=$this->emp_number;
 			}
 		}
 		if(isset($_POST['WorkExperience'])){
 			$this->createActiveTab='wrk';
 			$model_wrkExp->attributes=$_POST['WorkExperience'];
 			if($model_wrkExp->save()){
-				$this->emp_number=$model_wrkExp->emp_number;
 				$model_wrkExp->unsetAttributes();
-				$model_wrkExp->emp_number=$this->emp_number;
 			}
 		}
 		if(isset($_POST['Training'])){
 			$this->createActiveTab='train';
 			$model_training->attributes=$_POST['Training'];
 			if($model_training->save()){
-				$this->emp_number=$model_training->emp_number;
 				$model_training->unsetAttributes();
-				$model_training->emp_number=$this->emp_number;
 			}
 		}
 		if(isset($_POST['EmpEmergContact'])){
 			$this->createActiveTab='emerg';
 			$model_emerg->attributes=$_POST['EmpEmergContact'];
 			if($model_emerg->save()){
-				$this->emp_number=$model_emerg->emp_number;
 				$model_emerg->unsetAttributes();
-				$model_emerg->emp_number=$this->emp_number;
 			}
 		}
 		if(isset($_POST['Education'])){
@@ -137,12 +132,15 @@ class EmployeeController extends Controller
 			$model_educ->degree_course=ucfirst($model_educ->degree_course);
 			$model_educ->school=ucfirst($model_educ->school);
 			if($model_educ->save()){
-				$this->emp_number=$model_educ->emp_number;
 				$model_educ->unsetAttributes();
-				$model_educ->emp_number=$this->emp_number;
 			}
 		}
-
+		$model_fambg->emp_number=$this->emp_number;
+		$model_lic->emp_number=$this->emp_number;
+		$model_wrkExp->emp_number=$this->emp_number;
+		$model_training->emp_number=$this->emp_number;
+		$model_emerg->emp_number=$this->emp_number;
+		$model_educ->emp_number=$this->emp_number;
 		//DataProviders
 		$dataProvider_fambg =FamilyBackground::model()->getFamBgByEmp($this->emp_number);
         $dataProvider_lic= License::model()->getLicensesByEmp($this->emp_number);
@@ -152,8 +150,7 @@ class EmployeeController extends Controller
         $dataProvider_educ= Education::model()->getEducationByEmp($this->emp_number);
 
 
-		$this->render('create/index',array(
-			'model'	=>	$model,
+		$this->render('create/miscInfo',array(
 			'model_fambg'=>$model_fambg,
 			'model_lic'=>$model_lic,
 			'model_wrkExp'=>$model_wrkExp,
@@ -179,13 +176,19 @@ class EmployeeController extends Controller
 		$this->layout='/layouts/profile';
 		$model=$this->loadModel($id);
 		$this->emp_number=$model->emp_number;
-
+		$model->scenario = 'updateBasicInfo';
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Employee']))
 		{
 			$model->attributes=$_POST['Employee'];
+			$model->emp_lname=ucwords(strtolower($model->emp_lname));
+			$model->emp_mname=ucwords(strtolower($model->emp_mname));
+			$model->emp_fname=ucwords(strtolower($model->emp_fname));
+			$model->emp_nickname=ucwords(strtolower($model->emp_nickname));
+			$model->lastEdited=date('yyyy-mm-dd H:i:s');
+			$model->lastEditedBy=Yii::app()->user->id;
 			if($model->save()){
 				Controller::refresh();
 			}
@@ -201,7 +204,7 @@ class EmployeeController extends Controller
 		$this->layout='/layouts/profile';
 		$model=$this->loadModel($id);		
 		$this->emp_number=$model->emp_number;
-
+		$model->scenario='updateContacts';
 		if(isset($_POST['Employee']))
 		{
 			$model->attributes=$_POST['Employee'];
@@ -225,7 +228,7 @@ class EmployeeController extends Controller
 		$this->layout='/layouts/profile';
 		$model=$this->loadModel($id);
 		$this->emp_number=$model->emp_number;
-
+		$model->scenario='updateJob';
 		if(isset($_POST['Employee']))
 		{
 			$model->attributes=$_POST['Employee'];
@@ -233,7 +236,6 @@ class EmployeeController extends Controller
 				Controller::refresh();
 			}
 		}
-
 
 		$this->render('jobDetails/index',array(
 			'model'				=>	$model,
@@ -271,35 +273,6 @@ class EmployeeController extends Controller
 		));
 	}
 
-	public function actionDependent($id){
-		$this->layout = '/layouts/profile';
-        $model = new Dependent;
-		$this->emp_number=$this->loadModel($id)->emp_number;
-       
-        if (isset($_POST['Dependent'])) {
-            $model->attributes = $_POST['Dependent'];
-            $model->emp_number=$this->emp_number;
-            $model->name = ucwords(strtolower($model->name));
-            if ($model->save()){
-            	$model->unsetAttributes();
-            }
-               
-        }
-
-        $dataProvider = new CActiveDataProvider('Dependent', array(
-                    'criteria' => array(
-                        'condition' => 'emp_number=:emp_number',
-                        'params' => array(':emp_number' => $this->emp_number),
-                    ),
-                    'pagination' => array(
-                        'pageSize' => 31,
-                    ),
-        ));
-
-        $this->render('dependent/index', array(
-            'model' => $model,'dataProvider' => $dataProvider,
-        ));
-	}
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

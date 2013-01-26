@@ -22,6 +22,7 @@
 			'fixed'=>'top',
 			'fluid'=>false,
 			//'brand'=>'<img src="'.Yii::app()->request->baseUrl.'/images/banner.png"></img>',
+			//'brand'=>'',
 			'collapse'=>'true',
 			'items'=>array(
 				array(
@@ -40,10 +41,12 @@
 						array('label'=>'Generate Leave Credits', 'url'=>array('/hr/leaveCredit/generate')),
 						//array('label'=>'Manage Leaves', 'url'=>'/personnel/supervisor'),
 					)),
-					array('label'=>'Accounts','items'=>array(
-						array('label'=>'New Account', 'url'=>array('/hr/user/index')),
-						//array('label'=>'Manage Accounts', 'url'=>array('/hr/user/admin')),
+					array('label'=>'User Accounts','items'=>array(
+						array('label'=>'New Account', 'url'=>array('/hr/user/create')),
+						array('label'=>'Generate User Accounts', 'url'=>array('/hr/user/genAcc')),
+						array('label'=>'Manage Accounts', 'url'=>array('/hr/user/admin')),
 						array('label'=>'Change Role', 'url'=>array('/hr/user/changeRole')),
+
 					)),
 					array('label'=>'Maintenance','items'=>array(
 						array('label'=>'Office', 'url'=>array('/hr/department/index')),

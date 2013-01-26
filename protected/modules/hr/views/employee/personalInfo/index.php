@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 ?>
 
-<h3>Personal Information of <?php echo $model->fullname; ?></h3>
+<h3>Basic Information of <?php echo $model->fullname; ?></h3>
 
 <?php 
 

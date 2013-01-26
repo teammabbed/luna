@@ -81,6 +81,10 @@ class Employee extends CActiveRecord
 	 * @param string $className active record class name.
 	 * @return Employee the static model class
 	 */
+
+
+	public $deptname,$position;
+
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -102,11 +106,16 @@ class Employee extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('emp_number,emp_birthday ,emp_lname,emp_fname,dept_code,emp_address,item_no,emp_supervisor,emp_status,emp_gender,joined_date,position_code', 'required'),
+			array('emp_number,emp_birthday ,emp_lname,emp_fname,dept_code,emp_address,emp_address_current,item_no,emp_supervisor,emp_status,emp_gender,joined_date,position_code', 'required','on'=>'create'),
+			array('emp_number,emp_birthday ,emp_lname,emp_fname,emp_gender', 'required','on'=>'updateBasicInfo'),
+			array('emp_address,emp_address_current','required','on'=>'updateContacts'),
+			array('emp_number,emp_status,position_code,dept_code,emp_supervisor,joined_date','required','on'=>'updateJob'),
 			array('emp_number','unique'),
 			array('emp_status, position_code, dept_code, sal_grade_code, item_no', 'numerical', 'integerOnly'=>true),
 			array('emp_number, emp_supervisor', 'length', 'max'=>10),
 			array('emp_lname, emp_fname, emp_mname, emp_nickname, emp_hm_tel, emp_mobile, emp_work_tel, emp_work_email,  orig_appointment, promoted_position, termination_position, lastEditedBy', 'length', 'max'=>50),
+			array('emp_work_email','email','allowEmpty'=>true),
+			array('emp_birthday','date','format'=>'yyyy-mm-dd'),
 			array('emp_gender', 'length', 'max'=>6),
 			array('emp_name_ext', 'length', 'max'=>4),
 			array('emp_birthplace, emp_address, emp_address_current', 'length', 'max'=>100),
@@ -116,7 +125,7 @@ class Employee extends CActiveRecord
 			array('emp_birthday, emp_ctc_date, joined_date, promoted_date, termination_date, lastEdited', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('emp_number, emp_lname, emp_name_ext,item_no, emp_fname, emp_gender, emp_mname, emp_nickname, emp_birthday, emp_birthplace, emp_marital_status, emp_sss_num, emp_gsis_num, emp_philhealth_num, emp_hdmf_num, emp_policy_num, emp_unified_num, emp_tin_num, emp_ctc_num, emp_ctc_date, emp_status, position_code, emp_address, emp_address_current, dept_code, emp_supervisor, emp_hm_tel, emp_mobile, emp_work_tel, emp_work_email,  sal_grade_code, joined_date, orig_appointment, promoted_date, promoted_position, termination_date, termination_position, termination_reason, isActive, lastEdited, lastEditedBy', 'safe', 'on'=>'search'),
+			array('position,deptname, emp_number, emp_lname, emp_name_ext,item_no, emp_fname, emp_gender, emp_mname, emp_nickname, emp_birthday, emp_birthplace, emp_marital_status, emp_sss_num, emp_gsis_num, emp_philhealth_num, emp_hdmf_num, emp_policy_num, emp_unified_num, emp_tin_num, emp_ctc_num, emp_ctc_date, emp_status, position_code, emp_address, emp_address_current, dept_code, emp_supervisor, emp_hm_tel, emp_mobile, emp_work_tel, emp_work_email,  sal_grade_code, joined_date, orig_appointment, promoted_date, promoted_position, termination_date, termination_position, termination_reason, isActive, lastEdited, lastEditedBy', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -129,7 +138,6 @@ class Employee extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'departments' => array(self::HAS_MANY, 'Department', 'supervisor'),
-			'tblEmpAffiliations' => array(self::HAS_MANY, 'TblEmpAffiliation', 'emp_number'),
 			'tblEmpAttachments' => array(self::HAS_MANY, 'TblEmpAttachment', 'emp_number'),
 			'tblEmpAwards' => array(self::HAS_MANY, 'TblEmpAward', 'emp_number'),
 			'tblEmpCivics' => array(self::HAS_MANY, 'TblEmpCivic', 'emp_number'),
@@ -201,6 +209,8 @@ class Employee extends CActiveRecord
 			'lastEdited' => 'Last Edited',
 			'lastEditedBy' => 'Last Edited By',
 			'item_no'=>'Item No',
+			'deptname'=>'Office',
+			'position'=>'Position',
 		);
 	}
 
@@ -256,10 +266,18 @@ class Employee extends CActiveRecord
 		$criteria->compare('lastEdited',$this->lastEdited,true);
 		$criteria->compare('lastEditedBy',$this->lastEditedBy,true);
 		$criteria->compare('item_no',$this->item_no,true);
+		$criteria->compare('name',$this->deptname,true);
+		$criteria->compare('description',$this->position,true);
 
 
+
+		$criteria->with=array("department","position");
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'pagination'=>array(
+				'pageSize'=>15,
+			),
 		));
 	}
 
@@ -276,10 +294,6 @@ class Employee extends CActiveRecord
                             'params' => array(':isActive' => 'Y', 'category' => 'head')
                ));
 	}
-
-	public function getDeptHeadsList(){
-		return $supervisorList = CHtml::listData(Employee::model()->getDeptHeads(), 'emp_number', 'fullname');
-	}
 	
 	public function getEmployees() {
          return $list = CHtml::listData($this->model()->findAll(array(
@@ -287,5 +301,21 @@ class Employee extends CActiveRecord
              'condition'=>'isActive=:isActive',
              'params'=>array(':isActive'=>'Y'),
           )),'emp_number','fullname');
+    }
+    
+    public function getEmployeeHeads() {
+         return $list = CHtml::listData($this->model()->with('position')->findAll(array(
+             'order' => 'emp_lname',
+             'condition'=>'isActive=:isActive and category=:category',
+             'params'=>array(':isActive'=>'Y',':category'=>'head'),
+          )),'emp_number','fullname');
+	}
+    
+    public function getSubordinates($empNumber) {
+         return $list = CHtml::listData($this->model()->with('position')->findAll(array(
+             'order' => 'emp_lname',
+             'condition'=>'isActive=:isActive and emp_supervisor=:emp_supervisor',
+             'params'=>array(':isActive'=>'Y','emp_supervisor'=>$empNumber),
+                    )),'emp_number','fullname');
     }
 }

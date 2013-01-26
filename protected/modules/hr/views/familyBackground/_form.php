@@ -9,22 +9,17 @@ $rel_type=array(
 );
 ?>
 
-<div class="well span10">
 <?php 
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'fambg-form',
 	'type'=>'horizontal',
 )); ?>
 
-<div class="span4">
 	<?php echo $form->hiddenField($model,'emp_number');?>
 	<?php echo $form->textFieldRow($model,'fname');?>
 	<?php echo $form->textFieldRow($model,'mi');?>
 	<?php echo $form->textFieldRow($model,'lname');?>
 	<?php echo $form->dropDownListRow($model,'relationship',$rel_type,array('empty'=>'--please select--')); ?>
-</div>
-
-<div class="span4">
 	<div class="control-group">
 	    <div class="control-label">
 	        <?php echo $form->labelEx($model, 'date_of_birth'); ?>
@@ -54,41 +49,10 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	<?php echo $form->dropDownListRow($model,'status',array('alive'=>'Alive','deceased'=>'Deceased'));?>
 
 
-	<div class="offset2">
-		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Save','type'=>'primary')); ?><span style="width:5px"></span>
-		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'reset', 'label'=>'Clear','type'=>'warning')); ?>
+	<div class="form-actions">
+		<?php $this->widget('bootstrap.widgets.TbButton', array('icon'=>'ok white', 'buttonType'=>'submit', 'label'=>'Save','type'=>'primary')); ?><span style="width:5px"></span>
+		<?php $this->widget('bootstrap.widgets.TbButton', array('icon'=>'ban-circle white','buttonType'=>'reset', 'label'=>'Clear','type'=>'warning')); ?>
 	 </div>
 	
-</div>
+
 <?php $this->endWidget(); ?>
-</div>
-<div class="span10">
-<?php
-$this->widget('bootstrap.widgets.TbGridView', array(
-	'dataProvider'=>$dataProvider,
-	'template'=>"{items}",
-	'columns'=>array(
-		array('header'=>'No','value'=>'$row+1'),
-		'lname',
-		'fname',
-		'relationship',
-		'date_of_birth'=>array('name'=>'date_of_birth','value'=>'date("F d, Y",strtotime($data->date_of_birth))'),
-		'occupation',
-		'status',
-		array(
-			'header'=>'Actions',
-			'template'=>'{delete}',
-			'class'=>'bootstrap.widgets.TbButtonColumn',
-			'deleteButtonUrl'=>'Yii::app()->createUrl("hr/employee/deleteFam", array("id"=>$data->faf_code))',
-			'buttons'=>array(
-				'delete'=>array(
-					'url'=>'Yii::app()->createUrl("hr/employee/deleteFam", array("id"=>$data->faf_id))',
-				)
-			)
-		),
-	),
-
-));
-
-?>
-</div>

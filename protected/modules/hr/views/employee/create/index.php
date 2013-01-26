@@ -5,11 +5,11 @@ $this->breadcrumbs=array(
 
 ?>
 <?php
-	if($this->emp_number==0):
+	if($this->emp_number==0){
 		$this->renderPartial('create/personalInfo',array(
 			'model'=>$model,
 		));
-	else:
+	}else{
 		$this->renderPartial('create/miscInfo',array(
 			'model_fambg'=>$model_fambg,
 			'model_lic'=>$model_lic,
@@ -24,5 +24,5 @@ $this->breadcrumbs=array(
 			'dataProvider_lic'=>$dataProvider_lic,
 			'dataProvider_fambg'=>$dataProvider_fambg,
 		));
-	endif;
+	}
 ?>

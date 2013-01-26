@@ -10,9 +10,15 @@
 
 <?php echo $form->errorSummary($model); ?>
 <?php echo $form->textFieldRow($model, 'emp_number', array('readOnly' => true)); ?>
-<?php echo $form->textFieldRow($model, 'emp_lname'); ?>
 <?php echo $form->textFieldRow($model, 'emp_fname'); ?>
 <?php echo $form->textFieldRow($model, 'emp_mname'); ?>
+<?php echo $form->textFieldRow($model, 'emp_lname'); ?>
+    <?php
+        $name_ext=array('Jr'=>'Jr','Sr'=>'Sr',
+            'II'=>'II','III'=>'III','IV'=>'IV',
+            'V'=>'V','VI'=>'VI');
+    ?>
+<?php echo $form->dropDownListRow($model, 'emp_name_ext',$name_ext,array('empty'=>'None')); ?>
 <?php echo $form->textFieldRow($model, 'emp_nickname'); ?>
 <?php echo $form->dropDownListRow($model, 'emp_gender', 
 			array(
@@ -51,7 +57,6 @@
                     'defaultDate' => $model->emp_birthday,
                 ),
             ));
-            echo '(yyyy-mm-dd)'
             ?>
             <?php echo $form->error($model, 'emp_birthday'); ?>
     </div>
@@ -140,7 +145,7 @@
 </div>
 
 <div class="form-actions">
-<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Save','type'=>'primary')); ?><span style="width:5px"></span>
-<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'reset', 'label'=>'Clear','type'=>'warning')); ?>
+<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Save','type'=>'primary','icon'=>'ok white')); ?><span style="width:5px"></span>
+<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'reset', 'label'=>'Clear','type'=>'warning','icon'=>'ban-circle white')); ?>
  </div>
 <?php $this->endWidget(); ?>

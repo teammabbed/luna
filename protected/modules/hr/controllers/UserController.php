@@ -26,7 +26,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('index','update','admin','delete', 'changeRole','updateRole'),
+				'actions'=>array('create','update','admin','delete', 'changeRole','updateRole','genAcc'),
 				'roles'=>array('hradmin'),
 			),
 			array('deny',  // deny all users
@@ -43,30 +43,19 @@ class UserController extends Controller
 	public function actionUpdate($id)
 	{
 		$this->layout='/layouts/column1';
-		$model_edit=$this->loadModel($id);
-
-		$old_password=$model_edit->password;
+		$model=$this->loadModel($id);
+		$model->scenario='adminUpdate';
 		//$this->performAjaxValidation($model_new);
 
 		if(isset($_POST['User']))
 		{
-			$model_edit->attributes=$_POST['User'];
-			$model_edit->password=$old_password;
-			$model_edi->password_repeat=$old_password;
-			$model_edit->new_password=$old_password;
-			$model_edit->new_password_repeat=$old_password;
-			if($model_edit->save())
-				$this->redirect(array('index'));
+			$model->attributes=$_POST['User'];
+			if($model->save())
+				$this->redirect(array('admin'));
 		}
 
-		$model=new User('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['User']))
-			$model->attributes=$_GET['User'];
-
-		$this->render('index',array(
+		$this->render('update',array(
 			'model'=>$model,
-			'model_new'=>$model_edit,
 		));
 	}
 
@@ -92,30 +81,38 @@ class UserController extends Controller
 
 	
 	
-	public function actionIndex()
+	public function actionCreate()
 	{
 		$this->layout='/layouts/column1';
-		$model_new=new User;
+		$model=new User;
 		
-		$this->performAjaxValidation($model_new);
+		//$this->performAjaxValidation($model_new);
+		$model->scenario="create";
 
 		if(isset($_POST['User']))
 		{
-			$model_new->attributes=$_POST['User'];
-			$model_new->password=md5("luna");
-			if($model_new->save())
-				$model_new=new User;
+			$model->attributes=$_POST['User'];
+			$model->password=md5("luna");
+			if($model->save())
+				$model->unsetAttributes();
 		}
 
+		$this->render('create',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionAdmin(){
+		$this->layout='/layouts/column1';
 		$model=new User('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['User']))
 			$model->attributes=$_GET['User'];
 
-		$this->render('index',array(
+		$this->render('admin',array(
 			'model'=>$model,
-			'model_new'=>$model_new,
 		));
+
 	}
 
 	public function actionchangeRole()
@@ -142,6 +139,34 @@ class UserController extends Controller
         $this->render('changeRole', array( 'dataProvider' => $dataProvider));
 	}
 
+	public function actionGenAcc(){
+		$this->layout='/layouts/column1';
+		$model = new User();
+
+		if (isset($_POST['selectedItems'])) {
+			set_time_limit(1000);
+			$model->attributes=$_POST['LeaveCredit'];
+			foreach($_POST['selectedItems'] as $deptCode):
+				$employees=Employee::model()->findAll(array(
+					'condition' => 'dept_code = :deptCode and isActive = :isActive',
+                    'params' => array(':deptCode' => $deptCode, 'isActive' => 'Y'),
+				));
+				foreach($employees as $employee):
+					if(!LeaveCredit::model()->find('emp_number=:emp_number and leave_year=:leave_year',array(':emp_number'=>$employee->emp_number,':leave_year'=>$model->leave_year))){
+						$this->createLeaveCredits($employee->emp_number,$model->leave_year);
+					}
+				endforeach;
+			endforeach;
+		}
+
+        
+
+        $this->render('generate',array(
+        	'model'=>$model,
+        	'dataProvider'=>Department::model()->getDepartmentData(),
+        ));
+
+	}
 
 	public function actionUpdateRole()
 	{

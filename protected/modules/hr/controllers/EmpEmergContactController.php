@@ -49,7 +49,7 @@ class EmpEmergContactController extends Controller
 		$employee=Employee::model()->findByPk($id);
 		$this->emp_number=$employee->emp_number;
 		$model=new EmpEmergContact;
-		$emergencyContacts=EmpEmergContact::model()->getEmerContactByEmp($employee->emp_number);
+		$dataProvider=EmpEmergContact::model()->getEmerContactByEmp($employee->emp_number);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -65,7 +65,7 @@ class EmpEmergContactController extends Controller
 		$this->render('index',array(
 			'model'				=> $model,
 			'employee'			=> $employee,
-			'emergencyContacts'	=> $emergencyContacts,
+			'dataProvider'	    => $dataProvider,
 		));
 	}
 

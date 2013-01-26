@@ -2,20 +2,20 @@
 
 $this->breadcrumbs=array(
 	'PMIS (Manage Employees)'=>array('employee/admin'),
-	$employee->fullname=>array('employee/personalInfo&id='.$employee->emp_number),
-	'Work Experience'
+	$employee->fullname=>array('employee/basicInfo&id='.$employee->emp_number),
+	'Seminars and Trainings'
 );
 
 ?>
 
-<h3>Work Experience of <?php echo $employee->fullname;?></h3>
+<h3>Seminars and Trainings Atteded by <?php echo $employee->fullname;?></h3>
 
 <?php
 $this->widget('bootstrap.widgets.TbTabs', array(
 	'type' => 'tabs',
 	'tabs' => array(
 		array('label' => 'List', 
-			  'content' => $this->renderPartial('_view', array('dataProvider'=>$workExperience), true), 
+			  'content' => $this->renderPartial('_view', array('dataProvider'=>$dataProvider), true), 
 			  'active' => (!$model->hasErrors()),
 		),
 		array('label' => 'Create', 

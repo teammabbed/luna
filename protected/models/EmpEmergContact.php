@@ -43,12 +43,12 @@ class EmpEmergContact extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('emp_number, name, relationship', 'required'),
+			array('emp_number,contact_no,address, name, relationship', 'required'),
 			array('emp_number', 'length', 'max'=>10),
-			array('home_no, mobile_no, office_no', 'length', 'max'=>15),
+			array('contact_no', 'length', 'max'=>15),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('eec_code, emp_number, name, relationship, home_no, mobile_no, office_no', 'safe', 'on'=>'search'),
+			array('eec_code, emp_number,address, name, relationship, contact_no', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,9 +74,8 @@ class EmpEmergContact extends CActiveRecord
 			'emp_number' => 'Emp Number',
 			'name' => 'Name',
 			'relationship' => 'Relationship',
-			'home_no' => 'Home No',
-			'mobile_no' => 'Mobile No',
-			'office_no' => 'Office No',
+			'contact_no'=>'Contact Number',
+			'address'=>'Address'
 		);
 	}
 
@@ -95,9 +94,8 @@ class EmpEmergContact extends CActiveRecord
 		$criteria->compare('emp_number',$this->emp_number,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('relationship',$this->relationship,true);
-		$criteria->compare('home_no',$this->home_no,true);
-		$criteria->compare('mobile_no',$this->mobile_no,true);
-		$criteria->compare('office_no',$this->office_no,true);
+		$criteria->compare('contact_no',$this->contact_no,true);
+		$criteria->compare('address',$this->address,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

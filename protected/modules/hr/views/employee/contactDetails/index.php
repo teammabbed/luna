@@ -19,10 +19,10 @@ $this->widget('bootstrap.widgets.TbTabs', array(
 	'tabs' => array(
 		array('label' => 'Update', 'content' => $this->renderPartial('contactDetails/_form', array(
 				'model'=>$model,'provinces'=>$provinces,'towns'=>$towns
-			), true), 'active' => true
+			), true), 'active' => (!$model->hasErrors()),
 		),
 		array('label' => 'View', 'content' => $this->renderPartial('contactDetails/_view', array(
 				'model'=>$model,
-			), true)),
+			), true)), 'active' => ($model->hasErrors()),
 )));
 

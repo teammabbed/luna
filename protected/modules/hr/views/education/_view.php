@@ -1,14 +1,23 @@
-<?php $this->widget('bootstrap.widgets.TbGridView',array(
-	'id'=>'education-grid',
-	'dataProvider'=>$education,
+<?php
+$this->widget('bootstrap.widgets.TbGridView', array(
+	'dataProvider'=>$dataProvider,
+	'template'=>"{items}",
 	'columns'=>array(
-		'degree',
+		array('header'=>'No','value'=>'$row+1'),
+		'degree_course',
+		'level',
 		'school',
-		'start_date',
-		'end_date',
+		'yr_start',
+		'yr_end',
+		'remarks',
 		array(
+			'header'=>'Actions',
+			'template'=>'{delete}',
 			'class'=>'bootstrap.widgets.TbButtonColumn',
-			'template'=>'{delete}'
+			'deleteButtonUrl'=>'Yii::app()->createUrl("hr/employee/deleteEduc", array("id"=>$data->edu_code))',
 		),
 	),
-)); ?>
+
+));
+
+?>

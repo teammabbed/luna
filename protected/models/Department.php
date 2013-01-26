@@ -121,4 +121,13 @@ class Department extends CActiveRecord
 	       'order' => 'shortname',
         )),'dept_code','shortname');
     }
+
+    public function getDepartmentData(){
+    	return new CActiveDataProvider('Department', array(
+	        'criteria' => array('order' => 'name'),
+	        'pagination' => array(
+	            'pageSize' => 50,
+            ),
+        ));
+    }
 }

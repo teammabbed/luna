@@ -11,10 +11,8 @@
  */
 class User extends CActiveRecord
 {
-	public $password_repeat;
-	public $new_password;
-	public $new_password_repeat;
-	public $fullname;
+
+	public $fullname,$current_password,$new_password,$repeat_password;
 
 	public static function model($className=__CLASS__)
 	{
@@ -37,15 +35,15 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username,password,emp_number', 'required'),
+			array('password,username, emp_number,role','required','on'=>'create'),
+			array('password,username', 'required', 'on' => 'login'),
+			array('password,username,emp_number,role', 'required', 'on' => 'adminUpdate'),
 			array('username, password', 'length', 'max'=>50),
 			array('role', 'length', 'max' => 10),
-            array('password,username', 'required', 'on' => 'login'),
-			array('username, emp_number','unique'),
-			array('password_repeat, password ,new_password,new_password_repeat, username', 'required', 'on' => 'update'),
-            array('new_password_repeat','compare','compareAttribute'=>'new_password', 'on' => 'update'),
-            //array('username','exist', 'on'=>'update'),
-            array('password_repeat,new_password, new_password_repeat','safe'),
+			array('username, emp_number','unique','on'=>'create'),
+			array('repeat_password, password ,new_password,current_password, username', 'required', 'on' => 'userUpdate'),
+            array('repeat_password','compare','compareAttribute'=>'new_password', 'on' => 'userUpdate'),
+            array('repeat_password,new_password, password,current_password','safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('username, role, emp_number, fullname', 'safe', 'on'=>'search'),
@@ -72,10 +70,10 @@ class User extends CActiveRecord
 		return array(
 			'username' => 'Username',
 			'password' => 'Password',
-			'password_repeat' => 'Old Password',
+			'repeat_password' => 'Repeat Password',
 			'new_password' => 'New Password',
-			'new_password_repeat' => 'Re-type Password',
 			'role' => 'Role',
+			'current_password'=>'Old Password',
 			'emp_number' => 'Employee',
 			'fullname'=>'Employee Name',
 		);

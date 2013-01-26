@@ -1,7 +1,14 @@
+<?php
+$this->breadcrumbs=array(
+	'PMIS (Create Employee)'
+);
+?>
+
 <div class="page-header">
 	  <h2>Create Employee</h2>
 </div>
 
+<div class="span12">
 <?php
  $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'personal-form',
@@ -10,7 +17,7 @@
     'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
 
-<div class="span12">
+
 	<div class="span7">
 	<?php
 	$this->widget('bootstrap.widgets.TbTabs', array(
@@ -50,11 +57,11 @@
 		</div>
 	</div>
 
-</div>
 
 
 <?php $this->endWidget(); ?>
 
+</div>
 <?php
 
 Yii::app()->clientScript->registerScript('generateEmpnumber', '
