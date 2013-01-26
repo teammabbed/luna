@@ -113,4 +113,5 @@ class LeaveCredit extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
 }

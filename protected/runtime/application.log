@@ -6759,3 +6759,14 @@ REQUEST_URI=/luna/index.php?r=hr/user/genAcc
 in C:\wamp\www\luna\protected\modules\hr\views\user\generate.php (47)
 in C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php (167)
 in C:\wamp\www\luna\index.php (13)
+2013/01/26 13:03:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "create".' in C:\wamp\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(270): CController->missingAction('create')
+#1 C:\wamp\framework\web\CWebApplication.php(282): CController->run('create')
+#2 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('hr/leaveCredit/...')
+#3 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\luna\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/luna/index.php?r=hr/leaveCredit/create
+HTTP_REFERER=http://localhost/luna/index.php?r=hr/leaveCredit/generate
+---

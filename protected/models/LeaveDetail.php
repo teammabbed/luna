@@ -42,7 +42,7 @@ class LeaveDetail extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('detail_id, leave_id, leave_dates, leave_duration, leave_credit', 'required'),
-			array('detail_id, leave_id, leave_credit', 'length', 'max'=>13),
+			array('detail_id,leave_id', 'length', 'max'=>16),
 			array('leave_duration', 'length', 'max'=>2),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -58,7 +58,7 @@ class LeaveDetail extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'leave' => array(self::BELONGS_TO, 'EmpLeave', 'leave_id'),
+			'leave' => array(self::BELONGS_TO, 'Leave', 'leave_id'),
 		);
 	}
 
@@ -70,9 +70,9 @@ class LeaveDetail extends CActiveRecord
 		return array(
 			'detail_id' => 'Detail',
 			'leave_id' => 'Leave',
-			'leave_dates' => 'Leave Dates',
-			'leave_duration' => 'Leave Duration',
-			'leave_credit' => 'Leave Credit',
+			'leave_dates' => 'Dates',
+			'leave_duration' => 'Duration',
+			'leave_credit' => 'Credit',
 		);
 	}
 
@@ -97,4 +97,5 @@ class LeaveDetail extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
 }

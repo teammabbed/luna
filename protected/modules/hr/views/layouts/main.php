@@ -37,9 +37,9 @@
 						//array('label'=>'Deactivate employee', 'url'=>array('/hr/employee/deactivate')),
 					)),
 					array('label'=>'Leaves', 'items'=>array(
-						array('label'=>'New Leave', 'url'=>array('/hr/empLeave/create')),
+						array('label'=>'New Leave', 'url'=>array('/hr/leave/create')),
+						array('label'=>'Manage Leaves', 'url'=>array('/hr/leave/admin')),
 						array('label'=>'Generate Leave Credits', 'url'=>array('/hr/leaveCredit/generate')),
-						//array('label'=>'Manage Leaves', 'url'=>'/personnel/supervisor'),
 					)),
 					array('label'=>'User Accounts','items'=>array(
 						array('label'=>'New Account', 'url'=>array('/hr/user/create')),
