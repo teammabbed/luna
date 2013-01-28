@@ -6771,8 +6771,11 @@ REQUEST_URI=/luna/index.php?r=hr/leaveCredit/create
 HTTP_REFERER=http://localhost/luna/index.php?r=hr/leaveCredit/generate
 ---
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> origin/master
 2013/01/26 13:31:00 [error] [exception.CException] exception 'CException' with message 'Property "Employee.emp_name_ext" is not defined.' in C:\wamp\framework\base\CComponent.php:131
 Stack trace:
 #0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('emp_name_ext')
@@ -6979,6 +6982,7 @@ Stack trace:
 #29 {main}
 REQUEST_URI=/luna/index.php?r=hr/employee/basicInfo&id=1011-19
 HTTP_REFERER=http://localhost/luna/index.php?r=hr/employee/admin
+<<<<<<< HEAD
 =======
 >>>>>>> origin/loan
 2013/01/27 20:45:10 [error] [exception.CException] exception 'CException' with message 'Property "User.unsetAttributes" is not defined.' in C:\wamp\framework\base\CComponent.php:130
@@ -7589,3 +7593,24 @@ in C:\wamp\www\luna\index.php (13)
 >>>>>>> Accounting Module started
 ---
 >>>>>>> origin/loan
+=======
+---
+2013/01/28 04:14:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "users/user/updateRole".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('users/user/upda...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\luna\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/luna/index.php?r=users/user/updateRole
+HTTP_REFERER=http://localhost/luna/index.php?r=hr/user/changeRole&id=1011
+---
+2013/01/28 04:21:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "accounting/employee/index".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('accounting/empl...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\luna\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/luna/index.php?r=accounting/employee/index
+HTTP_REFERER=http://localhost/luna/index.php?r=accounting/loan/create
+---
+>>>>>>> origin/master
