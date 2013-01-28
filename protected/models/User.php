@@ -46,7 +46,7 @@ class User extends CActiveRecord
             array('repeat_password,new_password, password,current_password','safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('username, role, emp_number, fullname', 'safe', 'on'=>'search'),
+			array('username, role, emp_number, fullname,userid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,6 +68,7 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'userid'=>'User ID',
 			'username' => 'Username',
 			'password' => 'Password',
 			'repeat_password' => 'Repeat Password',
@@ -91,6 +92,7 @@ class User extends CActiveRecord
 		$criteria=new CDbCriteria;
 		$sort=new CSort;
 
+		$criteria->compare('userid',$this->userid,true);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('role',$this->role,true);

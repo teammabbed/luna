@@ -61,6 +61,14 @@ return array (
     array (
       0 => 'user',
     ),
+    'assignments' => 
+    array (
+      'acc' => 
+      array (
+        'bizRule' => NULL,
+        'data' => NULL,
+      ),
+    ),
   ),
   'user' => 
   array (

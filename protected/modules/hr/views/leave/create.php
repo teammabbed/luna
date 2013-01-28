@@ -41,7 +41,9 @@ $this->widget('bootstrap.widgets.TbTabs', array(
 </div>
 
 <?php
-$this->endWidget();
+$this->endWidget();?>
+
+<?php
 Yii::app()->clientScript->registerScript('addOption', '
 $(function(){
         

@@ -28,8 +28,12 @@
 				'class'=>'bootstrap.widgets.TbMenu',
 				'items'=>array(
 					array('label'=>'Home', 'url'=>array('/accounting/default/')),
-					array('label'=>'Payroll', 'url'=>array('/accounting/employee/index')),
-
+					array('label'=>'Loans', 'items'=>array(
+						array('label'=>'New Loans','url'=>array('/accounting/loan/create')),
+						array('label'=>'Manage Loans','url'=>array('/accounting/loan/admin')),
+						array('label'=>'Loan Payments','url'=>array('/accounting/loanPayment/index')),
+						array('label'=>'Loan Types','url'=>array('/accounting/loanType/index')),
+					)),
 				)),
 				array(
 					'class'=>'bootstrap.widgets.TbMenu',

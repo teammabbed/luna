@@ -22,7 +22,7 @@ $this->menu = Department::model()->departments;
 		array(
 			'header'=>'Role',
 			'type'=>'raw',
-			'value'=>'CHtml::dropDownList("role", $data->role, array("HrAdmin"=>"HR Admin","Head"=>"Head","SuperAccountant"=>"Super Accountant","User"=>"User","Accountant"=>"Accountant"),
+			'value'=>'CHtml::dropDownList("role", $data->role, array("hradmin"=>"HR Admin","head"=>"Head","superaccountant"=>"Super Accountant","user"=>"User","accountant"=>"Accountant"),
 					array("id"=>$data->username,
 						"ajax"=>array(
 							"type"=>"POST",

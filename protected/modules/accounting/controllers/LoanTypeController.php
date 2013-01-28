@@ -55,6 +55,7 @@ class LoanTypeController extends Controller
 		}
 
 		$this->render('update',array(
+<<<<<<< HEAD
 
 			$model_edit->attributes=$_POST['LoanType'];
 			if($model_edit->save())
@@ -62,6 +63,8 @@ class LoanTypeController extends Controller
 		}
 
 		$this->render('index',array(
+=======
+>>>>>>> mamaw
 			'model'=>$model,
 		));
 	}
@@ -95,7 +98,10 @@ class LoanTypeController extends Controller
 		if(isset($_POST['LoanType']))
 		{
 			$model_new->attributes=$_POST['LoanType'];
+<<<<<<< HEAD
 
+=======
+>>>>>>> mamaw
 			$modelnew->agency=ucwords($model_new->agency);
 			if($model_new->save()){
 				$this->refresh();

@@ -141,22 +141,31 @@ class UserController extends Controller
 
 	public function actionGenAcc(){
 		$this->layout='/layouts/column1';
-		$model = new User();
-
+		$model->scenario='create';
+		$ctr=0;
 		if (isset($_POST['selectedItems'])) {
 			set_time_limit(1000);
-			$model->attributes=$_POST['LeaveCredit'];
 			foreach($_POST['selectedItems'] as $deptCode):
 				$employees=Employee::model()->findAll(array(
 					'condition' => 'dept_code = :deptCode and isActive = :isActive',
                     'params' => array(':deptCode' => $deptCode, 'isActive' => 'Y'),
 				));
 				foreach($employees as $employee):
-					if(!LeaveCredit::model()->find('emp_number=:emp_number and leave_year=:leave_year',array(':emp_number'=>$employee->emp_number,':leave_year'=>$model->leave_year))){
-						$this->createLeaveCredits($employee->emp_number,$model->leave_year);
+					if(!User::model()->find('emp_number=:emp_number',array(':emp_number'=>$employee->emp_number))){
+						$model = new User();
+						$model->username= strtolower(str_replace(" ","", $employee->emp_lname)).".".strtolower(str_replace(" ", "", $employee->emp_fname)).substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 3);
+						$model->password=md5("luna");
+						$model->emp_number=$employee->emp_number;
+						$model->role="User";
+						if($model->save()){
+							++$ctr;
+						}
 					}
 				endforeach;
 			endforeach;
+
+			Yii::app()->user->setFlash('success', "<strong>Well done!</strong> You successfully generated <strong>$ctr user accounts</strong>");
+
 		}
 
         
