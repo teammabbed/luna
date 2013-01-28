@@ -6977,3 +6977,21 @@ Stack trace:
 REQUEST_URI=/luna/index.php?r=hr/employee/basicInfo&id=1011-19
 HTTP_REFERER=http://localhost/luna/index.php?r=hr/employee/admin
 ---
+2013/01/28 04:14:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "users/user/updateRole".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('users/user/upda...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\luna\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/luna/index.php?r=users/user/updateRole
+HTTP_REFERER=http://localhost/luna/index.php?r=hr/user/changeRole&id=1011
+---
+2013/01/28 04:21:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "accounting/employee/index".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('accounting/empl...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\luna\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/luna/index.php?r=accounting/employee/index
+HTTP_REFERER=http://localhost/luna/index.php?r=accounting/loan/create
+---
