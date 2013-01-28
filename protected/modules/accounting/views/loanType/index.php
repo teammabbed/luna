@@ -4,11 +4,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<div>
+<div class="page-header">
 	  <h2>Create Loan types</h2>
 </div>
-
-
 
 <div class="span11">
 
@@ -22,7 +20,7 @@ $this->breadcrumbs=array(
 				), true), 'active' => (!$model_new->hasErrors())
 			),
 
-			array('label' => 'Create', 'content' => $this->renderPartial('_create', array(
+			array('label' => 'Create', 'content' => $this->renderPartial('_form', array(
 					'model'=>$model_new,
 				), true),'active' => ($model_new->hasErrors())
 			),

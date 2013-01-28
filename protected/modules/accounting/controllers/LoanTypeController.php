@@ -47,12 +47,13 @@ class LoanTypeController extends Controller
 
 		if(isset($_POST['LoanType']))
 		{
-			$model_edit->attributes=$_POST['LoanType'];
-			if($model_edit->save())
+			$model->attributes=$_POST['LoanType'];
+			$model->agency=ucwords($model->agency);
+			if($model->save())
 				$this->redirect(array('index'));
 		}
 
-		$this->render('index',array(
+		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
@@ -86,6 +87,7 @@ class LoanTypeController extends Controller
 		if(isset($_POST['LoanType']))
 		{
 			$model_new->attributes=$_POST['LoanType'];
+			$modelnew->agency=ucwords($model_new->agency);
 			if($model_new->save()){
 				$this->refresh();
 			}
