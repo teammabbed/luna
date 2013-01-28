@@ -29,6 +29,3 @@ $this->breadcrumbs=array(
 
 
 </div>
-
-
-<?php

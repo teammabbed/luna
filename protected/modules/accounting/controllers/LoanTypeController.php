@@ -47,6 +47,7 @@ class LoanTypeController extends Controller
 
 		if(isset($_POST['LoanType']))
 		{
+
 			$model->attributes=$_POST['LoanType'];
 			$model->agency=ucwords($model->agency);
 			if($model->save())

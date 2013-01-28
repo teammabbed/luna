@@ -6770,6 +6770,217 @@ Stack trace:
 REQUEST_URI=/luna/index.php?r=hr/leaveCredit/create
 HTTP_REFERER=http://localhost/luna/index.php?r=hr/leaveCredit/generate
 ---
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+2013/01/26 13:31:00 [error] [exception.CException] exception 'CException' with message 'Property "Employee.emp_name_ext" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('emp_name_ext')
+#1 C:\wamp\framework\web\helpers\CHtml.php(2158): CActiveRecord->__get('emp_name_ext')
+#2 C:\wamp\framework\web\helpers\CHtml.php(1515): CHtml::resolveValue(Object(Employee), 'emp_name_ext')
+#3 C:\wamp\framework\web\widgets\CActiveForm.php(764): CHtml::activeDropDownList(Object(Employee), 'emp_name_ext', Array, Array)
+#4 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\input\TbInputHorizontal.php(113): CActiveForm->dropDownList(Object(Employee), 'emp_name_ext', Array, Array)
+#5 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\input\TbInput.php(205): TbInputHorizontal->dropDownList()
+#6 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\input\TbInputHorizontal.php(24): TbInput->run()
+#7 C:\wamp\framework\web\CBaseController.php(174): TbInputHorizontal->run()
+#8 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\TbActiveForm.php(681): CBaseController->widget('bootstrap.widge...', Array)
+#9 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\TbActiveForm.php(124): TbActiveForm->inputRow('dropdownlist', Object(Employee), 'emp_name_ext', Array, Array)
+#10 C:\wamp\www\luna\protected\modules\hr\views\employee\create\_basicInfo.php(12): TbActiveForm->dropDownListRow(Object(Employee), 'emp_name_ext', Array, Array)
+#11 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\lun...')
+#12 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#13 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#14 C:\wamp\www\luna\protected\modules\hr\views\employee\create\personalInfo.php(30): CController->renderPartial('create/_basicIn...', Array, true)
+#15 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\lun...')
+#16 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#17 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#18 C:\wamp\framework\web\CController.php(783): CController->renderPartial('create/personal...', Array, true)
+#19 C:\wamp\www\luna\protected\modules\hr\controllers\EmployeeController.php(77): CController->render('create/personal...', Array)
+#20 C:\wamp\framework\web\actions\CInlineAction.php(50): EmployeeController->actionCreate()
+#21 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#22 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#23 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#24 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#25 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#26 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#27 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#28 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#29 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#30 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('hr/employee/cre...')
+#31 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#32 C:\wamp\www\luna\index.php(13): CApplication->run()
+#33 {main}
+REQUEST_URI=/luna/index.php?r=hr/employee/create
+HTTP_REFERER=http://localhost/luna/index.php?r=hr/default
+---
+2013/01/26 13:36:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[42000] [1049] Unknown database 'db_lorma_lgu'' in C:\wamp\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\wamp\framework\db\CDbConnection.php(331): CDbConnection->open()
+#1 C:\wamp\framework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 C:\wamp\framework\base\CModule.php(388): CDbConnection->init()
+#3 C:\wamp\framework\base\CApplication.php(431): CModule->getComponent('db')
+#4 C:\wamp\framework\db\ar\CActiveRecord.php(624): CApplication->getDb()
+#5 C:\wamp\framework\db\ar\CActiveRecord.php(2311): CActiveRecord->getDbConnection()
+#6 C:\wamp\framework\db\ar\CActiveRecord.php(388): CActiveRecordMetaData->__construct(Object(Leave))
+#7 C:\wamp\framework\db\ar\CActiveRecord.php(403): CActiveRecord::model('Leave')
+#8 C:\wamp\framework\db\ar\CActiveRecord.php(78): CActiveRecord->getMetaData()
+#9 C:\wamp\www\luna\protected\modules\hr\controllers\LeaveController.php(74): CActiveRecord->__construct()
+#10 C:\wamp\framework\web\actions\CInlineAction.php(50): LeaveController->actionCreate()
+#11 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#13 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#14 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#15 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#16 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#17 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#18 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#20 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('hr/leave/create')
+#21 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#22 C:\wamp\www\luna\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/luna/index.php?r=hr/leave/create
+---
+2013/01/26 13:41:06 [error] [exception.CException] exception 'CException' with message 'Property "Employee.name_ext" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('name_ext')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1809): CActiveRecord->__get('name_ext')
+#2 C:\wamp\framework\zii\widgets\CDetailView.php(212): CHtml::value(Object(Employee), 'name_ext')
+#3 C:\wamp\framework\web\CBaseController.php(174): CDetailView->run()
+#4 C:\wamp\www\luna\protected\modules\hr\views\employee\personalInfo\_view.php(23): CBaseController->widget('bootstrap.widge...', Array)
+#5 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\lun...')
+#6 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#7 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#8 C:\wamp\www\luna\protected\modules\hr\views\employee\personalInfo\index.php(25): CController->renderPartial('personalInfo/_v...', Array, true)
+#9 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\lun...')
+#10 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#11 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#12 C:\wamp\framework\web\CController.php(783): CController->renderPartial('personalInfo/in...', Array, true)
+#13 C:\wamp\www\luna\protected\modules\hr\controllers\EmployeeController.php(199): CController->render('personalInfo/in...', Array)
+#14 [internal function]: EmployeeController->actionBasicInfo('1011-10')
+#15 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EmployeeController), Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EmployeeController), Object(ReflectionMethod), Array)
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#21 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#24 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\wamp\framework\web\CWebApplication.php(283): CController->run('basicInfo')
+#26 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('hr/employee/bas...')
+#27 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#28 C:\wamp\www\luna\index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/luna/index.php?r=hr/employee/basicInfo&id=1011-10
+HTTP_REFERER=http://localhost/luna/index.php?r=hr/employee/admin
+---
+2013/01/26 13:41:15 [error] [exception.CException] exception 'CException' with message 'Property "Employee.name_ext" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('name_ext')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1809): CActiveRecord->__get('name_ext')
+#2 C:\wamp\framework\zii\widgets\CDetailView.php(212): CHtml::value(Object(Employee), 'name_ext')
+#3 C:\wamp\framework\web\CBaseController.php(174): CDetailView->run()
+#4 C:\wamp\www\luna\protected\modules\hr\views\employee\personalInfo\_view.php(23): CBaseController->widget('bootstrap.widge...', Array)
+#5 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\lun...')
+#6 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#7 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#8 C:\wamp\www\luna\protected\modules\hr\views\employee\personalInfo\index.php(25): CController->renderPartial('personalInfo/_v...', Array, true)
+#9 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\lun...')
+#10 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#11 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#12 C:\wamp\framework\web\CController.php(783): CController->renderPartial('personalInfo/in...', Array, true)
+#13 C:\wamp\www\luna\protected\modules\hr\controllers\EmployeeController.php(199): CController->render('personalInfo/in...', Array)
+#14 [internal function]: EmployeeController->actionBasicInfo('1011-14')
+#15 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EmployeeController), Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EmployeeController), Object(ReflectionMethod), Array)
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#21 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#24 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\wamp\framework\web\CWebApplication.php(283): CController->run('basicInfo')
+#26 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('hr/employee/bas...')
+#27 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#28 C:\wamp\www\luna\index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/luna/index.php?r=hr/employee/basicInfo&id=1011-14
+HTTP_REFERER=http://localhost/luna/index.php?r=hr/employee/admin
+---
+2013/01/26 13:43:21 [error] [exception.CException] exception 'CException' with message 'Property "Employee.name_ext" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('name_ext')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1809): CActiveRecord->__get('name_ext')
+#2 C:\wamp\framework\zii\widgets\CDetailView.php(212): CHtml::value(Object(Employee), 'name_ext')
+#3 C:\wamp\framework\web\CBaseController.php(174): CDetailView->run()
+#4 C:\wamp\www\luna\protected\modules\hr\views\employee\personalInfo\_view.php(23): CBaseController->widget('bootstrap.widge...', Array)
+#5 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\lun...')
+#6 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#7 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#8 C:\wamp\www\luna\protected\modules\hr\views\employee\personalInfo\index.php(25): CController->renderPartial('personalInfo/_v...', Array, true)
+#9 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\lun...')
+#10 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#11 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#12 C:\wamp\framework\web\CController.php(783): CController->renderPartial('personalInfo/in...', Array, true)
+#13 C:\wamp\www\luna\protected\modules\hr\controllers\EmployeeController.php(199): CController->render('personalInfo/in...', Array)
+#14 [internal function]: EmployeeController->actionBasicInfo('1011-10')
+#15 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EmployeeController), Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EmployeeController), Object(ReflectionMethod), Array)
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#21 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#24 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\wamp\framework\web\CWebApplication.php(283): CController->run('basicInfo')
+#26 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('hr/employee/bas...')
+#27 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#28 C:\wamp\www\luna\index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/luna/index.php?r=hr/employee/basicInfo&id=1011-10
+HTTP_REFERER=http://localhost/luna/index.php?r=hr/employee/admin
+---
+2013/01/28 03:51:18 [error] [exception.CException] exception 'CException' with message 'Property "Employee.name_ext" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('name_ext')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1809): CActiveRecord->__get('name_ext')
+#2 C:\wamp\framework\zii\widgets\CDetailView.php(212): CHtml::value(Object(Employee), 'name_ext')
+#3 C:\wamp\framework\web\CBaseController.php(174): CDetailView->run()
+#4 C:\wamp\www\luna\protected\modules\hr\views\employee\personalInfo\_view.php(23): CBaseController->widget('bootstrap.widge...', Array)
+#5 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\lun...')
+#6 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#7 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#8 C:\wamp\www\luna\protected\modules\hr\views\employee\personalInfo\index.php(25): CController->renderPartial('personalInfo/_v...', Array, true)
+#9 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\lun...')
+#10 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#11 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#12 C:\wamp\framework\web\CController.php(783): CController->renderPartial('personalInfo/in...', Array, true)
+#13 C:\wamp\www\luna\protected\modules\hr\controllers\EmployeeController.php(199): CController->render('personalInfo/in...', Array)
+#14 [internal function]: EmployeeController->actionBasicInfo('1011-19')
+#15 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EmployeeController), Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EmployeeController), Object(ReflectionMethod), Array)
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#21 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#24 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\wamp\framework\web\CWebApplication.php(283): CController->run('basicInfo')
+#26 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('hr/employee/bas...')
+#27 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#28 C:\wamp\www\luna\index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/luna/index.php?r=hr/employee/basicInfo&id=1011-19
+HTTP_REFERER=http://localhost/luna/index.php?r=hr/employee/admin
+=======
+>>>>>>> origin/loan
 2013/01/27 20:45:10 [error] [exception.CException] exception 'CException' with message 'Property "User.unsetAttributes" is not defined.' in C:\wamp\framework\base\CComponent.php:130
 Stack trace:
 #0 C:\wamp\framework\db\ar\CActiveRecord.php(143): CComponent->__get('unsetAttributes')
@@ -7272,6 +7483,7 @@ Stack trace:
 #34 {main}
 REQUEST_URI=/index.php?r=accounting/loanType/index
 HTTP_REFERER=http://luna.dev/index.php?r=accounting/default
+<<<<<<< HEAD
 ---
 2013/01/28 04:05:35 [error] [php] Undefined variable: model_new (C:\wamp\www\luna\protected\modules\accounting\views\loanType\index.php:22)
 Stack trace:
@@ -7373,3 +7585,7 @@ Stack trace:
 REQUEST_URI=/index.php?r=accounting/loanType/index
 in C:\wamp\www\luna\protected\modules\accounting\controllers\LoanTypeController.php (90)
 in C:\wamp\www\luna\index.php (13)
+=======
+>>>>>>> Accounting Module started
+---
+>>>>>>> origin/loan
