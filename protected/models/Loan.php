@@ -49,9 +49,10 @@ class Loan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('emp_number, monthly_amort, type_id, amount, apr, loan_date, payment_periods, terms','required'),
 			array('type_id, payment_periods', 'numerical', 'integerOnly'=>true),
-			array('amount, monthly_amort', 'numerical'),
-			array('emp_number, status', 'length', 'max'=>10),
+			array('amount, monthly_amort, apr', 'numerical'),
+			array('status', 'length', 'max'=>10),
 			array('terms', 'length', 'max'=>50),
 			array('loan_date, payment_start, payment_end', 'safe'),
 			// The following rule is used by search().
@@ -81,12 +82,13 @@ class Loan extends CActiveRecord
 	{
 		return array(
 			'loan_id' => 'Loan',
-			'emp_number' => 'Emp Number',
+			'emp_number' => 'Employee',
 			'type_id' => 'Type',
 			'amount' => 'Amount',
+			'apr' => 'APR (%)',
 			'terms' => 'Terms',
-			'payment_periods' => 'Payment Periods',
-			'monthly_amort' => 'Monthly Amort',
+			'payment_periods' => 'Payment Period (months)',
+			'monthly_amort' => 'Amortization',
 			'loan_date' => 'Loan Date',
 			'payment_start' => 'Payment Start',
 			'payment_end' => 'Payment End',

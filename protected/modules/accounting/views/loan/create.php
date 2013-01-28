@@ -10,6 +10,8 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Loan</h1>
+<h3>Create Loan</h3>
+
+<hr>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
