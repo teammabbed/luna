@@ -8,9 +8,10 @@ $this->breadcrumbs=array(
 
 <div class="page-header">
 	<h2>Generate User Accounts</h2>
-	<h4>Note: Existing User Accounts will NOT be overwritten</h4>
+	<h4>Note: Existing User Accounts will NOT be overwritten.<br>Default role is User.</h4>
 </div>
 
+<?php $this->widget('bootstrap.widgets.TbAlert'); ?>
 <?php $box = $this->beginWidget('bootstrap.widgets.TbBox', array(
 	'title' => 'Offices',
 	'headerIcon' => 'icon-home',
@@ -45,7 +46,7 @@ $this->breadcrumbs=array(
 ?>
 <br>
 <div class="form-actions">
-<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Generate','type'=>'primary')); ?> 
+<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Generate','type'=>'primary','icon'=>'refresh white')); ?> 
 </div>
 <?php $this->endWidget();?>
 

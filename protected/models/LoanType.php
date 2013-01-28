@@ -1,22 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "tbl_province".
+ * This is the model class for table "tbl_loan_type".
  *
- * The followings are the available columns in table 'tbl_province':
- * @property integer $province_code
- * @property string $name
+ * The followings are the available columns in table 'tbl_loan_type':
+ * @property integer $type_id
+ * @property string $description
+ * @property string $agency
  *
  * The followings are the available model relations:
- * @property Employee[] $employees
- * @property Town[] $towns
+ * @property EmpLoan[] $empLoans
  */
-class Province extends CActiveRecord
+class LoanType extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Province the static model class
+	 * @return LoanType the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -28,7 +28,7 @@ class Province extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_province';
+		return 'tbl_loan_type';
 	}
 
 	/**
@@ -39,10 +39,11 @@ class Province extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'length', 'max'=>50),
+			array('agency,description','required'),
+			array('description, agency', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('province_code, name', 'safe', 'on'=>'search'),
+			array('type_id, description, agency', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,8 +55,7 @@ class Province extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'employees' => array(self::HAS_MANY, 'Employee', 'emp_province'),
-			'towns' => array(self::HAS_MANY, 'Town', 'province_code'),
+			'empLoans' => array(self::HAS_MANY, 'EmpLoan', 'type_id'),
 		);
 	}
 
@@ -65,8 +65,9 @@ class Province extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'province_code' => 'Province Code',
-			'name' => 'Name',
+			'type_id' => 'Type',
+			'description' => 'Name',
+			'agency' => 'Loan Provider',
 		);
 	}
 
@@ -81,11 +82,20 @@ class Province extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('province_code',$this->province_code);
-		$criteria->compare('name',$this->name,true);
+		$criteria->compare('type_id',$this->type_id);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('agency',$this->agency,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+	public function getLoanTypes() {
+        return $list = CHtml::listData($this->model()->findAll(array(
+	       'order' => 'description',
+        )),'type_id','description');
+    }
+
+
+
 }

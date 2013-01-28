@@ -16,8 +16,8 @@ $this->breadcrumbs=array(
 	'columns'=>array(
 		array('header'=>'No.','value'=>'$row+1'),
 		'username',
-		array('header'=>'Emp Number', 'name'=>'emp_number','value'=>'$data->emp_number'),
-		array('header'=>'Emp Name','name'=>'fullname', 'value'=>'$data->employee->fullname'),
+		array('header'=>'Employee Number', 'name'=>'emp_number','value'=>'$data->emp_number'),
+		array('header'=>'Employee Name','name'=>'fullname', 'value'=>'$data->employee->fullname'),
 		array('name'=>'role','value'=>'ucfirst($data->role)'),
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',

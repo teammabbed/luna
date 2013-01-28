@@ -6770,3 +6770,506 @@ Stack trace:
 REQUEST_URI=/luna/index.php?r=hr/leaveCredit/create
 HTTP_REFERER=http://localhost/luna/index.php?r=hr/leaveCredit/generate
 ---
+2013/01/27 20:45:10 [error] [exception.CException] exception 'CException' with message 'Property "User.unsetAttributes" is not defined.' in C:\wamp\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(143): CComponent->__get('unsetAttributes')
+#1 C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php(161): CActiveRecord->__get('unsetAttributes')
+#2 C:\wamp\framework\web\actions\CInlineAction.php(49): UserController->actionGenAcc()
+#3 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\framework\web\CWebApplication.php(282): CController->run('genAcc')
+#12 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('hr/user/genAcc')
+#13 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\luna\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php?r=hr/user/genAcc
+HTTP_REFERER=http://luna.dev/index.php?r=hr/user/genAcc
+---
+2013/01/27 20:45:52 [error] [exception.CException] exception 'CException' with message 'Property "User.unsetAttributes" is not defined.' in C:\wamp\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(143): CComponent->__get('unsetAttributes')
+#1 C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php(161): CActiveRecord->__get('unsetAttributes')
+#2 C:\wamp\framework\web\actions\CInlineAction.php(49): UserController->actionGenAcc()
+#3 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\framework\web\CWebApplication.php(282): CController->run('genAcc')
+#12 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('hr/user/genAcc')
+#13 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\luna\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php?r=hr/user/genAcc
+HTTP_REFERER=http://luna.dev/index.php?r=hr/user/genAcc
+---
+2013/01/27 20:46:14 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Reyes.Albino' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `tbl_user` (`role`, `username`, `password`, `emp_number`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php (160)
+in C:\wamp\www\luna\index.php (13)
+2013/01/27 20:46:14 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Reyes.Albino' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `tbl_user` (`role`, `username`, `password`, `emp_number`) VALUES (:yp0, :yp1, :yp2, :yp3)' in C:\wamp\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php(160): CActiveRecord->save()
+#3 C:\wamp\framework\web\actions\CInlineAction.php(49): UserController->actionGenAcc()
+#4 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\framework\web\CWebApplication.php(282): CController->run('genAcc')
+#13 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('hr/user/genAcc')
+#14 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\luna\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=hr/user/genAcc
+HTTP_REFERER=http://luna.dev/index.php?r=hr/user/genAcc
+---
+2013/01/27 20:50:29 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Reyes.Albino' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `tbl_user` (`role`, `username`, `password`, `emp_number`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php (161)
+in C:\wamp\www\luna\index.php (13)
+2013/01/27 20:50:29 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Reyes.Albino' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `tbl_user` (`role`, `username`, `password`, `emp_number`) VALUES (:yp0, :yp1, :yp2, :yp3)' in C:\wamp\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php(161): CActiveRecord->save()
+#3 C:\wamp\framework\web\actions\CInlineAction.php(49): UserController->actionGenAcc()
+#4 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\framework\web\CWebApplication.php(282): CController->run('genAcc')
+#13 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('hr/user/genAcc')
+#14 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\luna\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=hr/user/genAcc
+HTTP_REFERER=http://luna.dev/index.php?r=hr/user/genAcc
+---
+2013/01/27 21:01:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php:194
+Stack trace:
+#0 C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php(46): UserController->loadModel('marron.VictorMa...')
+#1 [internal function]: UserController->actionUpdate('marron.VictorMa...')
+#2 C:\wamp\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\wamp\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('hr/user/update')
+#14 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\luna\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=hr/user/update&id=marron.VictorMarvinKDH
+HTTP_REFERER=http://luna.dev/index.php?r=hr/user/update&id=marron.VictorMarvinKDH
+---
+2013/01/27 21:01:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php:194
+Stack trace:
+#0 C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php(46): UserController->loadModel('marron.VictorMa...')
+#1 [internal function]: UserController->actionUpdate('marron.VictorMa...')
+#2 C:\wamp\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\wamp\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('hr/user/update')
+#14 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\luna\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=hr/user/update&id=marron.VictorMarvinKDH
+HTTP_REFERER=http://luna.dev/index.php?r=hr/user/update&id=marron.VictorMarvinKDH
+---
+2013/01/27 23:33:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php:194
+Stack trace:
+#0 C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php(46): UserController->loadModel('marron.VictorMa...')
+#1 [internal function]: UserController->actionUpdate('marron.VictorMa...')
+#2 C:\wamp\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\wamp\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('hr/user/update')
+#14 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\luna\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=hr/user/update&id=marron.VictorMarvinKDH
+---
+2013/01/27 23:34:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php:194
+Stack trace:
+#0 C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php(46): UserController->loadModel('marron.VictorMa...')
+#1 [internal function]: UserController->actionUpdate('marron.VictorMa...')
+#2 C:\wamp\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\wamp\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('hr/user/update')
+#14 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\luna\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=hr/user/update&id=marron.VictorMarvinKDH
+HTTP_REFERER=http://luna.dev/index.php?r=hr/user/admin
+---
+2013/01/27 23:37:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php:194
+Stack trace:
+#0 C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php(46): UserController->loadModel('marron.victorma...')
+#1 [internal function]: UserController->actionUpdate('marron.victorma...')
+#2 C:\wamp\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\wamp\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('hr/user/update')
+#14 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\luna\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=hr/user/update&id=marron.victormarvinLCU
+HTTP_REFERER=http://luna.dev/index.php?r=hr/user/update&id=marron.victormarvinLCU
+---
+2013/01/27 23:43:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php:194
+Stack trace:
+#0 C:\wamp\www\luna\protected\modules\hr\controllers\UserController.php(46): UserController->loadModel('marron.victorma...')
+#1 [internal function]: UserController->actionUpdate('marron.victorma...')
+#2 C:\wamp\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\wamp\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('hr/user/update')
+#14 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\luna\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=hr/user/update&id=marron.victormarvinLCU
+HTTP_REFERER=http://luna.dev/index.php?r=hr/user/admin
+---
+2013/01/27 23:57:02 [error] [php] Trying to get property of non-object (C:\wamp\framework\base\CComponent.php(606) : eval()'d code:1)
+Stack trace:
+#0 C:\wamp\framework\zii\widgets\grid\CGridColumn.php(144): TbDataColumn->renderDataCellContent()
+#1 C:\wamp\framework\zii\widgets\grid\CGridView.php(589): TbDataColumn->renderDataCell()
+#2 C:\wamp\framework\zii\widgets\grid\CGridView.php(545): TbGridView->renderTableRow()
+#3 C:\wamp\framework\zii\widgets\grid\CGridView.php(455): TbGridView->renderTableBody()
+#4 C:\wamp\framework\zii\widgets\CBaseListView.php(160): TbGridView->renderItems()
+#5 unknown(0): TbGridView->renderSection()
+#6 C:\wamp\framework\zii\widgets\CBaseListView.php(143): preg_replace_callback()
+#7 C:\wamp\framework\zii\widgets\CBaseListView.php(128): TbGridView->renderContent()
+#8 C:\wamp\framework\web\CBaseController.php(173): TbGridView->run()
+#9 C:\wamp\www\luna\protected\modules\hr\views\department\index.php(44): DepartmentController->widget()
+#10 C:\wamp\framework\web\CBaseController.php(126): require()
+#11 C:\wamp\framework\web\CBaseController.php(95): DepartmentController->renderInternal()
+#12 C:\wamp\framework\web\CController.php(869): DepartmentController->renderFile()
+#13 C:\wamp\framework\web\CController.php(782): DepartmentController->renderPartial()
+#14 C:\wamp\www\luna\protected\modules\hr\controllers\DepartmentController.php(114): DepartmentController->render()
+#15 C:\wamp\framework\web\actions\CInlineAction.php(49): DepartmentController->actionIndex()
+#16 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams()
+#17 C:\wamp\framework\web\filters\CFilterChain.php(133): DepartmentController->runAction()
+#18 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#19 C:\wamp\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#20 C:\wamp\framework\web\filters\CInlineFilter.php(58): DepartmentController->filterAccessControl()
+#21 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#22 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#23 C:\wamp\framework\web\CController.php(265): DepartmentController->runActionWithFilters()
+#24 C:\wamp\framework\web\CWebApplication.php(282): DepartmentController->run()
+#25 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#26 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#27 C:\wamp\www\luna\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=hr%2Fdepartment%2Findex&Department_page=2&ajax=department-grid
+in C:\wamp\www\luna\protected\modules\hr\views\department\index.php (44)
+in C:\wamp\www\luna\protected\modules\hr\controllers\DepartmentController.php (114)
+in C:\wamp\www\luna\index.php (13)
+2013/01/27 23:57:10 [error] [php] Trying to get property of non-object (C:\wamp\framework\base\CComponent.php(606) : eval()'d code:1)
+Stack trace:
+#0 C:\wamp\framework\zii\widgets\grid\CGridColumn.php(144): TbDataColumn->renderDataCellContent()
+#1 C:\wamp\framework\zii\widgets\grid\CGridView.php(589): TbDataColumn->renderDataCell()
+#2 C:\wamp\framework\zii\widgets\grid\CGridView.php(545): TbGridView->renderTableRow()
+#3 C:\wamp\framework\zii\widgets\grid\CGridView.php(455): TbGridView->renderTableBody()
+#4 C:\wamp\framework\zii\widgets\CBaseListView.php(160): TbGridView->renderItems()
+#5 unknown(0): TbGridView->renderSection()
+#6 C:\wamp\framework\zii\widgets\CBaseListView.php(143): preg_replace_callback()
+#7 C:\wamp\framework\zii\widgets\CBaseListView.php(128): TbGridView->renderContent()
+#8 C:\wamp\framework\web\CBaseController.php(173): TbGridView->run()
+#9 C:\wamp\www\luna\protected\modules\hr\views\department\index.php(44): DepartmentController->widget()
+#10 C:\wamp\framework\web\CBaseController.php(126): require()
+#11 C:\wamp\framework\web\CBaseController.php(95): DepartmentController->renderInternal()
+#12 C:\wamp\framework\web\CController.php(869): DepartmentController->renderFile()
+#13 C:\wamp\framework\web\CController.php(782): DepartmentController->renderPartial()
+#14 C:\wamp\www\luna\protected\modules\hr\controllers\DepartmentController.php(114): DepartmentController->render()
+#15 C:\wamp\framework\web\actions\CInlineAction.php(49): DepartmentController->actionIndex()
+#16 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams()
+#17 C:\wamp\framework\web\filters\CFilterChain.php(133): DepartmentController->runAction()
+#18 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#19 C:\wamp\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#20 C:\wamp\framework\web\filters\CInlineFilter.php(58): DepartmentController->filterAccessControl()
+#21 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#22 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#23 C:\wamp\framework\web\CController.php(265): DepartmentController->runActionWithFilters()
+#24 C:\wamp\framework\web\CWebApplication.php(282): DepartmentController->run()
+#25 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#26 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#27 C:\wamp\www\luna\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=hr%2Fdepartment%2Findex&Department_page=2&ajax=department-grid
+in C:\wamp\www\luna\protected\modules\hr\views\department\index.php (44)
+in C:\wamp\www\luna\protected\modules\hr\controllers\DepartmentController.php (114)
+in C:\wamp\www\luna\index.php (13)
+2013/01/27 23:57:17 [error] [php] Trying to get property of non-object (C:\wamp\framework\base\CComponent.php(606) : eval()'d code:1)
+Stack trace:
+#0 C:\wamp\framework\zii\widgets\grid\CGridColumn.php(144): TbDataColumn->renderDataCellContent()
+#1 C:\wamp\framework\zii\widgets\grid\CGridView.php(589): TbDataColumn->renderDataCell()
+#2 C:\wamp\framework\zii\widgets\grid\CGridView.php(545): TbGridView->renderTableRow()
+#3 C:\wamp\framework\zii\widgets\grid\CGridView.php(455): TbGridView->renderTableBody()
+#4 C:\wamp\framework\zii\widgets\CBaseListView.php(160): TbGridView->renderItems()
+#5 unknown(0): TbGridView->renderSection()
+#6 C:\wamp\framework\zii\widgets\CBaseListView.php(143): preg_replace_callback()
+#7 C:\wamp\framework\zii\widgets\CBaseListView.php(128): TbGridView->renderContent()
+#8 C:\wamp\framework\web\CBaseController.php(173): TbGridView->run()
+#9 C:\wamp\www\luna\protected\modules\hr\views\department\index.php(44): DepartmentController->widget()
+#10 C:\wamp\framework\web\CBaseController.php(126): require()
+#11 C:\wamp\framework\web\CBaseController.php(95): DepartmentController->renderInternal()
+#12 C:\wamp\framework\web\CController.php(869): DepartmentController->renderFile()
+#13 C:\wamp\framework\web\CController.php(782): DepartmentController->renderPartial()
+#14 C:\wamp\www\luna\protected\modules\hr\controllers\DepartmentController.php(114): DepartmentController->render()
+#15 C:\wamp\framework\web\actions\CInlineAction.php(49): DepartmentController->actionIndex()
+#16 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams()
+#17 C:\wamp\framework\web\filters\CFilterChain.php(133): DepartmentController->runAction()
+#18 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#19 C:\wamp\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#20 C:\wamp\framework\web\filters\CInlineFilter.php(58): DepartmentController->filterAccessControl()
+#21 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#22 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#23 C:\wamp\framework\web\CController.php(265): DepartmentController->runActionWithFilters()
+#24 C:\wamp\framework\web\CWebApplication.php(282): DepartmentController->run()
+#25 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#26 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#27 C:\wamp\www\luna\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=hr%2Fdepartment%2Findex&Department_page=2&ajax=department-grid
+in C:\wamp\www\luna\protected\modules\hr\views\department\index.php (44)
+in C:\wamp\www\luna\protected\modules\hr\controllers\DepartmentController.php (114)
+in C:\wamp\www\luna\index.php (13)
+2013/01/28 02:22:00 [error] [exception.CException] exception 'CException' with message 'Unknown authorization item "Accountant".' in C:\wamp\framework\web\auth\CPhpAuthManager.php:179
+Stack trace:
+#0 C:\wamp\www\luna\protected\components\UserIdentity.php(22): CPhpAuthManager->assign('Accountant', 'acc')
+#1 C:\wamp\www\luna\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#2 C:\wamp\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#3 C:\wamp\framework\validators\CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#4 C:\wamp\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#5 C:\wamp\www\luna\protected\controllers\SiteController.php(67): CModel->validate()
+#6 C:\wamp\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#7 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\wamp\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp\framework\web\CWebApplication.php(282): CController->run('login')
+#11 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#12 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\wamp\www\luna\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://luna.dev/index.php
+---
+2013/01/28 02:24:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "accounting/loanType/index".' in C:\wamp\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('accounting/loan...')
+#1 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\luna\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=accounting/loanType/index
+HTTP_REFERER=http://luna.dev/index.php?r=accounting/default
+---
+2013/01/28 03:48:04 [error] [php] Undefined variable: dataProvider_fambg (C:\wamp\www\luna\protected\modules\accounting\views\loanType\index.php:22)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(869): LoanTypeController->renderFile()
+#1 C:\wamp\framework\web\CController.php(782): LoanTypeController->renderPartial()
+#2 C:\wamp\www\luna\protected\modules\accounting\controllers\LoanTypeController.php(108): LoanTypeController->render()
+#3 C:\wamp\framework\web\actions\CInlineAction.php(49): LoanTypeController->actionIndex()
+#4 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\framework\web\filters\CFilterChain.php(133): LoanTypeController->runAction()
+#6 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(58): LoanTypeController->filterAccessControl()
+#9 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(265): LoanTypeController->runActionWithFilters()
+#12 C:\wamp\framework\web\CWebApplication.php(282): LoanTypeController->run()
+#13 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\luna\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=accounting/loanType/index
+in C:\wamp\www\luna\protected\modules\accounting\views\loanType\index.php (22)
+in C:\wamp\www\luna\protected\modules\accounting\controllers\LoanTypeController.php (108)
+in C:\wamp\www\luna\index.php (13)
+2013/01/28 03:50:17 [error] [php] Undefined variable: dataProvider_fambg (C:\wamp\www\luna\protected\modules\accounting\views\loanType\index.php:22)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(869): LoanTypeController->renderFile()
+#1 C:\wamp\framework\web\CController.php(782): LoanTypeController->renderPartial()
+#2 C:\wamp\www\luna\protected\modules\accounting\controllers\LoanTypeController.php(108): LoanTypeController->render()
+#3 C:\wamp\framework\web\actions\CInlineAction.php(49): LoanTypeController->actionIndex()
+#4 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\framework\web\filters\CFilterChain.php(133): LoanTypeController->runAction()
+#6 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(58): LoanTypeController->filterAccessControl()
+#9 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(265): LoanTypeController->runActionWithFilters()
+#12 C:\wamp\framework\web\CWebApplication.php(282): LoanTypeController->run()
+#13 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\luna\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=accounting/loanType/index
+in C:\wamp\www\luna\protected\modules\accounting\views\loanType\index.php (22)
+in C:\wamp\www\luna\protected\modules\accounting\controllers\LoanTypeController.php (108)
+in C:\wamp\www\luna\index.php (13)
+2013/01/28 03:50:55 [error] [exception.CException] exception 'CException' with message 'Property "LoanTypeController.createActiveTab" is not defined.' in C:\wamp\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\luna\protected\modules\accounting\views\loanType\index.php(22): CComponent->__get('createActiveTab')
+#1 C:\wamp\framework\web\CBaseController.php(126): require('C:\wamp\www\lun...')
+#2 C:\wamp\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#3 C:\wamp\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#4 C:\wamp\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#5 C:\wamp\www\luna\protected\modules\accounting\controllers\LoanTypeController.php(108): CController->render('index', Array)
+#6 C:\wamp\framework\web\actions\CInlineAction.php(49): LoanTypeController->actionIndex()
+#7 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\wamp\framework\web\CWebApplication.php(282): CController->run('index')
+#16 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('accounting/loan...')
+#17 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#18 C:\wamp\www\luna\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/index.php?r=accounting/loanType/index
+HTTP_REFERER=http://luna.dev/index.php?r=accounting/default
+---
+2013/01/28 03:51:10 [error] [exception.CException] exception 'CException' with message 'Property "LoanType.name" is not defined.' in C:\wamp\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(143): CComponent->__get('name')
+#1 C:\wamp\framework\web\helpers\CHtml.php(2255): CActiveRecord->__get('name')
+#2 C:\wamp\framework\web\helpers\CHtml.php(1980): CHtml::resolveValue(Object(LoanType), 'name')
+#3 C:\wamp\framework\web\helpers\CHtml.php(1257): CHtml::activeInputField('text', Object(LoanType), 'name', Array)
+#4 C:\wamp\framework\web\widgets\CActiveForm.php(657): CHtml::activeTextField(Object(LoanType), 'name', Array)
+#5 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\input\TbInputHorizontal.php(232): CActiveForm->textField(Object(LoanType), 'name', Array)
+#6 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\input\TbInput.php(237): TbInputHorizontal->textField()
+#7 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\input\TbInputHorizontal.php(24): TbInput->run()
+#8 C:\wamp\framework\web\CBaseController.php(173): TbInputHorizontal->run()
+#9 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\TbActiveForm.php(681): CBaseController->widget('bootstrap.widge...', Array)
+#10 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\TbActiveForm.php(211): TbActiveForm->inputRow('textfield', Object(LoanType), 'name', NULL, Array)
+#11 C:\wamp\www\luna\protected\modules\accounting\views\loanType\_create.php(7): TbActiveForm->textFieldRow(Object(LoanType), 'name', Array)
+#12 C:\wamp\framework\web\CBaseController.php(126): require('C:\wamp\www\lun...')
+#13 C:\wamp\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#14 C:\wamp\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#15 C:\wamp\www\luna\protected\modules\accounting\views\loanType\index.php(27): CController->renderPartial('_create', Array, true)
+#16 C:\wamp\framework\web\CBaseController.php(126): require('C:\wamp\www\lun...')
+#17 C:\wamp\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#18 C:\wamp\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#19 C:\wamp\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#20 C:\wamp\www\luna\protected\modules\accounting\controllers\LoanTypeController.php(108): CController->render('index', Array)
+#21 C:\wamp\framework\web\actions\CInlineAction.php(49): LoanTypeController->actionIndex()
+#22 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#23 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#24 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#25 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#26 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#27 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#28 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#29 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#30 C:\wamp\framework\web\CWebApplication.php(282): CController->run('index')
+#31 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('accounting/loan...')
+#32 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#33 C:\wamp\www\luna\index.php(13): CApplication->run()
+#34 {main}
+REQUEST_URI=/index.php?r=accounting/loanType/index
+HTTP_REFERER=http://luna.dev/index.php?r=accounting/default
+---
+2013/01/28 03:51:22 [error] [exception.CException] exception 'CException' with message 'Property "LoanType.name" is not defined.' in C:\wamp\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(143): CComponent->__get('name')
+#1 C:\wamp\framework\web\helpers\CHtml.php(2255): CActiveRecord->__get('name')
+#2 C:\wamp\framework\web\helpers\CHtml.php(1980): CHtml::resolveValue(Object(LoanType), 'name')
+#3 C:\wamp\framework\web\helpers\CHtml.php(1257): CHtml::activeInputField('text', Object(LoanType), 'name', Array)
+#4 C:\wamp\framework\web\widgets\CActiveForm.php(657): CHtml::activeTextField(Object(LoanType), 'name', Array)
+#5 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\input\TbInputHorizontal.php(232): CActiveForm->textField(Object(LoanType), 'name', Array)
+#6 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\input\TbInput.php(237): TbInputHorizontal->textField()
+#7 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\input\TbInputHorizontal.php(24): TbInput->run()
+#8 C:\wamp\framework\web\CBaseController.php(173): TbInputHorizontal->run()
+#9 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\TbActiveForm.php(681): CBaseController->widget('bootstrap.widge...', Array)
+#10 C:\wamp\www\luna\protected\extensions\bootstrap\widgets\TbActiveForm.php(211): TbActiveForm->inputRow('textfield', Object(LoanType), 'name', NULL, Array)
+#11 C:\wamp\www\luna\protected\modules\accounting\views\loanType\_create.php(7): TbActiveForm->textFieldRow(Object(LoanType), 'name', Array)
+#12 C:\wamp\framework\web\CBaseController.php(126): require('C:\wamp\www\lun...')
+#13 C:\wamp\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#14 C:\wamp\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#15 C:\wamp\www\luna\protected\modules\accounting\views\loanType\index.php(27): CController->renderPartial('_create', Array, true)
+#16 C:\wamp\framework\web\CBaseController.php(126): require('C:\wamp\www\lun...')
+#17 C:\wamp\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\lun...', Array, true)
+#18 C:\wamp\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\lun...', Array, true)
+#19 C:\wamp\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#20 C:\wamp\www\luna\protected\modules\accounting\controllers\LoanTypeController.php(108): CController->render('index', Array)
+#21 C:\wamp\framework\web\actions\CInlineAction.php(49): LoanTypeController->actionIndex()
+#22 C:\wamp\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#23 C:\wamp\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#24 C:\wamp\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#25 C:\wamp\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#26 C:\wamp\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#27 C:\wamp\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#28 C:\wamp\framework\web\CController.php(291): CFilterChain->run()
+#29 C:\wamp\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#30 C:\wamp\framework\web\CWebApplication.php(282): CController->run('index')
+#31 C:\wamp\framework\web\CWebApplication.php(141): CWebApplication->runController('accounting/loan...')
+#32 C:\wamp\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#33 C:\wamp\www\luna\index.php(13): CApplication->run()
+#34 {main}
+REQUEST_URI=/index.php?r=accounting/loanType/index
+HTTP_REFERER=http://luna.dev/index.php?r=accounting/default
+---

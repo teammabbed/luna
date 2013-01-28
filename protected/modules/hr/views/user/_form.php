@@ -1,11 +1,11 @@
 
 <?php 
 $roles=array(
-	"User"=>"User",
-	"Head"=>"Head",
-	"HrAdmin"=>"HR Admin",
-	"Accountant"=>"Accountant",
-	"SuperAccountant"=>"Super Accountant"
+	"user"=>"User",
+	"head"=>"Head",
+	"hradmin"=>"HR Admin",
+	"accountant"=>"Accountant",
+	"superaccountant"=>"Super Accountant"
 );
 ?>
 
